@@ -23,5 +23,4 @@ import com.techiedb.app.bookman.Properties;
  */
 public abstract class BaseFragment extends Fragment{
     protected static final String TAG = Properties.PREFIX + BaseFragment.class.getSimpleName();
-
 }

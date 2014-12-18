@@ -4,5 +4,7 @@
     <string name="app_name">BookMan</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="app_name_sample_content">Evernote</string>
+    <string name="popup_share_item_title">Share content via app</string>
 
 </resources>
