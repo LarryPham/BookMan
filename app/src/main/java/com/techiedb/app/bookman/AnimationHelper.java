@@ -31,12 +31,6 @@ public class AnimationHelper {
     public static final int ANIMATION_UNSPECIFIED = -1;
     public static final int ANIMATION_LISTVIEW_SORT_TO_START = 0;
     public static final int ANIMATION_LISTVIEW_SORT_TO_END = 1;
-
-    /*public static final int ANIMATION_PENSETTING_OPEN = 2;
-    public static final int ANIMATION_PENSETTING_CLOSE = 3;
-    public static final int ANIMATION_GRID_DELETE = 4;
-    public static final int ANIMATION_DELETE_TORN = 5;
-    */
     private Rotate3dAnimation mRotate3DAnimation = null;
     private AnimationSet mAnimationSet = null;
 
