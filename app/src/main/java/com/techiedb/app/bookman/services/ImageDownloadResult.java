@@ -21,10 +21,11 @@ import android.graphics.Bitmap;
  *
  * The ImageDownloadResult class which will be adaptable for DownloadImage from server to BookApp
  */
-public class ImageDownloadResult {
+public class ImageDownloadResult extends BaseResult{
+
     private int mEntryId;
     private Bitmap mBitmap;
-    
+
     public ImageDownloadResult(int entryId, Bitmap bitmap){
         this.mEntryId = entryId;
         this.mBitmap = bitmap;
