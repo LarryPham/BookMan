@@ -18,4 +18,5 @@ public class Properties {
   public static final String PREFIX = "[BookMan]";
 
   public static final int HASH_CODE_FOR_IMAGE = 111;
+  public static final String URL = "http://it-ebooks-api.info/v1/";
 }
