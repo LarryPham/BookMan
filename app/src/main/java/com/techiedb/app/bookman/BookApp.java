@@ -51,12 +51,13 @@ public class BookApp extends Application {
   private static final String TAG = Properties.PREFIX + BookApp.class.getSimpleName();
 
   private BookDataModel mDataModel;
-  private BookDBHelper mDBHelper;
+  private BookDBHelper mDBHelper = new BookDBHelper(this);
   private BookService mService;
   private SharedPreferences mPrefs;
   private Context mContext;
   private List<ActivityHandler> mHandlerList = new ArrayList<ActivityHandler>();
   private AppMainHandler mainHandler = new AppMainHandler();
+
   private final BroadcastReceiver mReceiver = new BroadcastReceiver() {
     @Override
     public void onReceive(Context context, Intent intent) {
