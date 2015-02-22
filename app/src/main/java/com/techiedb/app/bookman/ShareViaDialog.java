@@ -33,7 +33,6 @@ import java.util.List;
  * to change without notice. History
  *
  * @author Larry Pham
- * @project BookMan
  * @since Dec.18.2014
  */
 public class ShareViaDialog extends Dialog {

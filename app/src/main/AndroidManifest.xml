@@ -1,21 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.techiedb.app.bookman" >
+    package="com.techiedb.app.bookman" android:versionCode="20150321" android:installLocation="auto"
+        android:versionName="2015.Feb.22.DEV">
+
+    <!-- Support screen for phone's device. -->
+    <supports-screens android:anyDensity="true"
+                      android:smallScreens="false"
+                      android:normalScreens="true"
+                      android:largeScreens="true"
+                      android:xlargeScreens="false"/>
+    <!-- Adding permissions for accessing internet, writing data-->
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.USE_CREDENTIALS"/>
+    <uses-permission android:name="android.permission.GET_TASKS"/>
 
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme">
+
+        <provider android:authorities="com.techiedb.app.bookman" android:name=".BooksProvider"
+                android:exported="false"/>
+        <service android:name=".services.BookService" android:enabled="true"/>
+
+        <receiver android:name=".BookReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="android.intent.action.EXTERNAL_APPLICATIONS_AVAILABLE"/>
+                <action android:name="android.intent.action.ACTION_POWER_CONNECTED"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.MEDIA_MOUNTED"/>
+                <action android:name="android.intent.action.MEDIA_UNMOUNTED"/>
+                <data android:scheme="file"/>
+            </intent-filter>
+        </receiver>
+
         <activity
             android:name=".MainBookManActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:configChanges="orientation|screenSize|keyboardHidden|locale"
+            android:windowSoftInputMode="adjustResize">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
+
+
     </application>
 
 </manifest>

@@ -1,5 +1,9 @@
 package com.techiedb.app.bookman;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+
 /**
  * Copyright (C) 2015 Techie Digital Benchwork Inc. All rights reserved. Mobile UX Promotion
  * Division. This software and its documentation are confidential and proprietary information of
@@ -15,6 +19,12 @@ package com.techiedb.app.bookman;
  *
  * BookMan         Revision:
  */
-public class BookReceiver {
+public class BookReceiver extends BroadcastReceiver {
 
+  private static final String TAG = Properties.PREFIX + BookReceiver.class.getSimpleName();
+
+  @Override
+  public void onReceive(Context context, Intent intent) {
+
+  }
 }
