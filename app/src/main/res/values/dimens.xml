@@ -7,4 +7,7 @@
     <dimen name="send_list_dialog_row_item_text_padding_left">10dp</dimen>
 	<dimen name="book_item_padding_left_right">12dp</dimen>
 	<dimen name="book_item_padding_top_bottom">10dp</dimen>
+
+	<dimen name="default_book_item_corner_radius">5dp</dimen>
+	<dimen name="default_book_item_shadow_radius">5dp</dimen>
 </resources>

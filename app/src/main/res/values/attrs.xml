@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<declare-styleable name="ShadowLayout">
+		<attr name="CornerRadius" format="dimension|reference"/>
+		<attr name="ShadowRadius" format="dimension|reference"/>
+		<attr name="ShadowColor" format="color|reference"/>
+		<attr name="Dx" format="dimension|reference"/>
+		<attr name="Dy" format="dimension|reference"/>
+	</declare-styleable>
+</resources>
