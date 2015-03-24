@@ -7,4 +7,13 @@
     <string name="app_name_sample_content">Evernote</string>
     <string name="popup_share_item_title">Share content via app</string>
 
+	<string name="book_item_title_sample_content">Success in Programming</string>
+	<string name="book_item_subtitle_sample_content">How to Gain Recognition, Power, and Influence Through Personal Branding</string>
+	<string name="book_item_publisher_sample_content">Apress</string>
+	<string name="book_item_author_sample_content">Frederic Harper</string>
+	<string name="book_item_isbn_sample_content">978-1-484200-02-5</string>
+	<string name="book_item_year_sample_content">2014</string>
+	<string name="book_item_language_sample_content">English</string>
+	<string name="book_enclosure_length_sample_content">3.4 MB</string>
+	<string name="book_enclosure_format_sample_content">PDF</string>
 </resources>

@@ -1,12 +1,10 @@
 package com.techiedb.app.bookman.models;
 
-import com.techiedb.app.bookman.Properties;
-
-import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
- * Copyright (C) 2015.Feb Techie Digital Benchwork Inc., Ltd. All rights reserved.
+ * Copyright (C) 2015 Techie Digital Benchwork Inc., Ltd. All rights reserved.
  *
  * Mobility Development Division, Digital Media & Communications Business, Techie Digital
  * Benchwork., Ltd.
@@ -20,40 +18,22 @@ import java.util.ArrayList;
  * responsibility for any errors that might appear in the software and documents. This publication
  * and the contents hereof are subject to change without notice.
  *
- * History 2015.Feb.19     Larry Pham         The 1st Sprint Version
+ * History 2015.Mar.24      Larry Pham         The 1st Sprint Version
  */
-public class JSONBooks implements Serializable {
-  private static final String TAG = Properties.PREFIX + JSONBooks.class.getSimpleName();
-  private int mErrorCode = 0;
-  private float mTime = 0.1f;
-  private int mTotal = 0;
-  private int mPage = 0;
+public class JsonBooks {
+  private String mTotal;
+  private int mPage;
+  private List<JsonBookItem> mJsonBookList=  new ArrayList<JsonBookItem>();
 
-  public JSONBooks() {
+  public JsonBooks() {
 
   }
 
-  public int getErrorCode() {
-    return mErrorCode;
-  }
-
-  public void setErrorCode(int errorCode) {
-    mErrorCode = errorCode;
-  }
-
-  public float getTime() {
-    return mTime;
-  }
-
-  public void setTime(float time) {
-    mTime = time;
-  }
-
-  public int getTotal() {
+  public String getTotal() {
     return mTotal;
   }
 
-  public void setTotal(int total) {
+  public void setTotal(String total) {
     mTotal = total;
   }
 
@@ -65,4 +45,11 @@ public class JSONBooks implements Serializable {
     mPage = page;
   }
 
+  public List<JsonBookItem> getJsonBookList() {
+    return mJsonBookList;
+  }
+
+  public void setJsonBookList(List<JsonBookItem> jsonBookList) {
+    mJsonBookList = jsonBookList;
+  }
 }

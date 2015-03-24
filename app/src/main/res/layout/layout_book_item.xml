@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+				android:paddingLeft="@dimen/book_item_padding_left_right"
+				android:paddingRight="@dimen/book_item_padding_left_right"
+				android:paddingTop="@dimen/book_item_padding_top_bottom"
+				android:paddingBottom="@dimen/book_item_padding_top_bottom">
+	<FrameLayout
+			android:id="@+id/book_item_cover_layout"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content">
+		<ImageView
+				android:id="@+id/book_item_cover_image"
+				android:layout_width="80dp"
+				android:layout_height="120dp"
+				android:src="@drawable/success_in_programming"/>
+    </FrameLayout>
+</RelativeLayout>

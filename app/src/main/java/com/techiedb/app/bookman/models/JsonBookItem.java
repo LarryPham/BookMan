@@ -5,7 +5,7 @@ import com.techiedb.app.bookman.Properties;
 import java.io.Serializable;
 
 /**
- * Copyright (C) 2015.Feb Techie Digital Benchwork Inc., Ltd. All rights reserved.
+ * Copyright (C) 2015 Techie Digital Benchwork Inc., Ltd. All rights reserved.
  *
  * Mobility Development Division, Digital Media & Communications Business, Techie Digital
  * Benchwork., Ltd.
@@ -19,21 +19,15 @@ import java.io.Serializable;
  * responsibility for any errors that might appear in the software and documents. This publication
  * and the contents hereof are subject to change without notice.
  *
- * History 2015.Feb.19     Larry Pham         The 1st Sprint Version
+ * History 2015.Mar.24      Larry Pham         The 1st Sprint Version
  */
-public class JSONBook implements Serializable {
-  public static final String TAG = Properties.PREFIX + Book.class.getSimpleName();
-
-  private long mId = 1l;
-  private String mTitle = null;
-  private String mSubTitle = null;
-  private String mDescription = null;
-  private String mImageURL = null;
-  private long mISBN = 1l;
-
-  public JSONBook() {
-
-  }
+public class JsonBookItem implements Serializable {
+  public static final String TAG = Properties.PREFIX + JsonBookItem.class.getSimpleName();
+  private long mId;
+  private String mTitle;
+  private String mDescription;
+  private Image mCoverBookImage;
+  private String mISBN;
 
   public long getId() {
     return mId;
@@ -51,14 +45,6 @@ public class JSONBook implements Serializable {
     mTitle = title;
   }
 
-  public String getSubTitle() {
-    return mSubTitle;
-  }
-
-  public void setSubTitle(String subTitle) {
-    mSubTitle = subTitle;
-  }
-
   public String getDescription() {
     return mDescription;
   }
@@ -67,19 +53,19 @@ public class JSONBook implements Serializable {
     mDescription = description;
   }
 
-  public String getImageURL() {
-    return mImageURL;
+  public Image getCoverBookImage() {
+    return mCoverBookImage;
   }
 
-  public void setImageURL(String imageURL) {
-    mImageURL = imageURL;
+  public void setCoverBookImage(Image coverBookImage) {
+    mCoverBookImage = coverBookImage;
   }
 
-  public long getISBN() {
+  public String getISBN() {
     return mISBN;
   }
 
-  public void setISBN(long ISBN) {
+  public void setISBN(String ISBN) {
     mISBN = ISBN;
   }
 }

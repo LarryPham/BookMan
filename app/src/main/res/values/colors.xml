@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<color name="book_app_background">#ffe0e0e0</color>
+	<color name="book_item_color_pressed">#ff0060ae</color>
+	<color name="book_item_color_hovered">#ff40a2ff</color>
+	<color name="book_item_color_selected">#ff909090</color>
+	<color name="book_item_color_default">#ffe0e0e0</color>
+	<color name="book_item_title_color">#ff00a356</color>
+	<color name="book_item_subtitle_color">#ff494949</color>
+	<color name="book_item_description_color">#ff212121</color>
+	<color name="book_item_content_link">#ff40a2ff</color>
+</resources>
