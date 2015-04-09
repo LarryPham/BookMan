@@ -15,21 +15,19 @@ import android.widget.FrameLayout;
 /**
  * Copyright (C) 2015 Techie Digital Benchwork Inc., Ltd. All rights reserved.
  *
- * Mobility Development Division, Digital Media & Communications Business, Techie Digital
- * Benchwork., Ltd.
+ * Mobility Development Division, Digital Media & Communications Business, Techie Digital Benchwork., Ltd.
  *
- * This software and its documentation are confidential and proprietary information of Techie
- * Digital Benchwork., Ltd.  No part of the software and documents may be copied, reproduced,
- * transmitted, translated, or reduced to any electronic medium or machine-readable form without the
- * prior written consent of Techie Digital Benchwork Inc.
+ * This software and its documentation are confidential and proprietary information of Techie Digital Benchwork., Ltd.  No part of the
+ * software and documents may be copied, reproduced, transmitted, translated, or reduced to any electronic medium or machine-readable form
+ * without the prior written consent of Techie Digital Benchwork Inc.
  *
- * Techie Digital Benchwork makes no representations with respect to the contents, and assumes no
- * responsibility for any errors that might appear in the software and documents. This publication
- * and the contents hereof are subject to change without notice.
+ * Techie Digital Benchwork makes no representations with respect to the contents, and assumes no responsibility for any errors that might
+ * appear in the software and documents. This publication and the contents hereof are subject to change without notice.
  *
  * History 2015.Mar.25      Larry Pham         The 1st Sprint Version
  */
 public class ShadowLayout extends FrameLayout {
+
   private static final String TAG = Properties.PREFIX + ShadowLayout.class.getSimpleName();
 
   private int mShadowColor;
@@ -50,7 +48,7 @@ public class ShadowLayout extends FrameLayout {
 
   public ShadowLayout(Context context, AttributeSet attrs, int defStyleAttr) {
     super(context, attrs, defStyleAttr);
-    initialize(context,attrs);
+    initialize(context, attrs);
   }
 
   private void initialize(Context context, AttributeSet attrs) {
@@ -101,7 +99,7 @@ public class ShadowLayout extends FrameLayout {
     Bitmap outBitmap = Bitmap.createBitmap(shadowWidth, shadowHeight, Bitmap.Config.ARGB_8888);
     Canvas canvas = new Canvas(outBitmap);
 
-    RectF shadowBoundary=  new RectF(shadowRadius, shadowRadius, shadowWidth - shadowRadius, shadowHeight - shadowRadius);
+    RectF shadowBoundary = new RectF(shadowRadius, shadowRadius, shadowWidth - shadowRadius, shadowHeight - shadowRadius);
     if (dy > 0) {
       shadowBoundary.top += dy;
       shadowBoundary.bottom -= dy;

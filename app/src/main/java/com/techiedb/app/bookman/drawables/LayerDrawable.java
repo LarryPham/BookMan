@@ -7,25 +7,23 @@ import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 
 /**
- * Copyright (C) 2014 Sugar Ventures Inc. All rights reserved. Mobile UX Promotion Division. This software and its
- * documentation are confidential and proprietary information of Sugar Ventures Inc.  No part of the software and
- * documents may be copied, reproduced, transmitted, translated, or reduced to any electronic medium or machine-readable
- * form without the prior written consent of Sugar Ventures Inc. Sugar Ventures Inc makes no representations with
- * respect to the contents, and assumes no responsibility for any errors that might appear in the software and
- * documents. This publication and the contents hereof are subject to change without notice. History
+ * Copyright (C) 2014 Sugar Ventures Inc. All rights reserved. Mobile UX Promotion Division. This software and its documentation are
+ * confidential and proprietary information of Sugar Ventures Inc.  No part of the software and documents may be copied, reproduced,
+ * transmitted, translated, or reduced to any electronic medium or machine-readable form without the prior written consent of Sugar Ventures
+ * Inc. Sugar Ventures Inc makes no representations with respect to the contents, and assumes no responsibility for any errors that might
+ * appear in the software and documents. This publication and the contents hereof are subject to change without notice. History
  *
  * @author Larry Pham
  * @since Apr.05.2015
  */
 public class LayerDrawable extends Drawable implements Drawable.Callback {
-  LayerState mLayerState;
 
+  private final Rect mTempRect = new Rect();
+  LayerState mLayerState;
   private int[] mPaddingLeft;
   private int[] mPaddingRight;
   private int[] mPaddingTop;
   private int[] mPaddingBottom;
-
-  private final Rect mTempRect = new Rect();
   private Drawable mParent;
   private boolean mBlockSetBounds;
 
@@ -63,6 +61,7 @@ public class LayerDrawable extends Drawable implements Drawable.Callback {
     }
     return false;
   }
+
   private void ensurePadding() {
     final int N = mLayerState.mNum;
     if (mPaddingLeft != null && mPaddingLeft.length >= N) {
@@ -120,12 +119,14 @@ public class LayerDrawable extends Drawable implements Drawable.Callback {
 
 
   static class Rec {
+
     public Drawable mDrawable;
     public int mInsetLeft, mInsetTop, mInsetRight, mInsetBottom;
     public int mId;
   }
 
   static class LayerState extends ConstantState {
+
     int mNum;
     Rec[] mArray;
     int mChangingConfiguration;

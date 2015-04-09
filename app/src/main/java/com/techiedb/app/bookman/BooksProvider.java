@@ -12,14 +12,12 @@ import android.util.Log;
 import com.techiedb.app.bookman.models.BookDBHelper;
 
 /**
- * Copyright (C) 2015 Techie Digital Benchwork Inc. All rights reserved. Mobile UX Promotion
- * Division. This software and its documentation are confidential and proprietary information of
- * Techie Digital Benchwork Inc.  No part of the software and documents may be copied, reproduced,
- * transmitted, translated, or reduced to any electronic medium or machine-readable form without the
- * prior written consent of Techie Digital Benchwork. Techie Digital Benchwork makes no
- * representations with respect to the contents, and assumes no responsibility for any errors that
- * might appear in the software and documents. This publication and the contents hereof are subject
- * to change without notice. History
+ * Copyright (C) 2015 Techie Digital Benchwork Inc. All rights reserved. Mobile UX Promotion Division. This software and its documentation
+ * are confidential and proprietary information of Techie Digital Benchwork Inc.  No part of the software and documents may be copied,
+ * reproduced, transmitted, translated, or reduced to any electronic medium or machine-readable form without the prior written consent of
+ * Techie Digital Benchwork. Techie Digital Benchwork makes no representations with respect to the contents, and assumes no responsibility
+ * for any errors that might appear in the software and documents. This publication and the contents hereof are subject to change without
+ * notice. History
  *
  * @author Larry Pham
  * @since 2015.Feb.22
@@ -29,24 +27,18 @@ import com.techiedb.app.bookman.models.BookDBHelper;
 public class BooksProvider extends ContentProvider {
 
   public static final String TAG = Properties.PREFIX + BooksProvider.class.getSimpleName();
-
-  private static Uri BOOK_APP_URI = Uri.parse("content://com.techiedb.app.bookman/BookTable");
-
-  private static final String TABLE_BOOK =  "BookTable";
-  private static final String TABLE_BOOKS=  "BooksTable";
-
   static final int BOOK_CASE = 1;
   static final int BOOKS_CASE = 2;
-
   static final String PATH = "BookTable";
   static final UriMatcher mMatcher;
-
   static {
     mMatcher = new UriMatcher(UriMatcher.NO_MATCH);
     mMatcher.addURI("com.techiedb.app.bookman", "BookTable", BOOK_CASE);
     mMatcher.addURI("com.techiedb.app.bookman", "BooksTable", BOOKS_CASE);
   }
-
+  private static final String TABLE_BOOK = "BookTable";
+  private static final String TABLE_BOOKS = "BooksTable";
+  private static Uri BOOK_APP_URI = Uri.parse("content://com.techiedb.app.bookman/BookTable");
   private SQLiteDatabase mDB;
 
   @Override
@@ -76,7 +68,7 @@ public class BooksProvider extends ContentProvider {
     }
 
     Cursor cursor = builder.query(mDB, projection, selection, selectionArgs, null, null, null);
-    cursor.setNotificationUri(getContext().getContentResolver(),uri);
+    cursor.setNotificationUri(getContext().getContentResolver(), uri);
     return cursor;
   }
 

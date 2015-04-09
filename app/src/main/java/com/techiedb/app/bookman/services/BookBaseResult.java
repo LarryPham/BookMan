@@ -13,6 +13,7 @@ import com.techiedb.app.bookman.Properties;
  * @since Apr.09.2015
  */
 public class BookBaseResult {
+
   public static final String TAG = Properties.PREFIX + BookBaseResult.class.getSimpleName();
   protected int mResultCode = 0;
   protected int mResultTotal = 0;

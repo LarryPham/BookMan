@@ -14,6 +14,7 @@ import com.techiedb.app.bookman.models.JsonBook;
  * @since Apr.09.2015
  */
 public class BookResult extends BookBaseResult {
+
   public static final String TAG = Properties.PREFIX + BookResult.class.getSimpleName();
   private JsonBook mBook;
 
@@ -24,6 +25,7 @@ public class BookResult extends BookBaseResult {
   public BookResult(JsonBook jsonBook) {
     this.mBook = jsonBook;
   }
+
   public JsonBook getBook() {
     return mBook;
   }

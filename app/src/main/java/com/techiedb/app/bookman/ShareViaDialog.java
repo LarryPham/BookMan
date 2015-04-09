@@ -23,14 +23,12 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * Copyright (C) 2014 Techie Digital Benchwork Inc. All rights reserved. Mobile UX Promotion
- * Division. This software and its documentation are confidential and proprietary information of
- * Techie Digital Benchwork Inc.  No part of the software and documents may be copied, reproduced,
- * transmitted, translated, or reduced to any electronic medium or machine-readable form without the
- * prior written consent of Techie Digital Benchwork. Techie Digital Benchwork makes no
- * representations with respect to the contents, and assumes no responsibility for any errors that
- * might appear in the software and documents. This publication and the contents hereof are subject
- * to change without notice. History
+ * Copyright (C) 2014 Techie Digital Benchwork Inc. All rights reserved. Mobile UX Promotion Division. This software and its documentation
+ * are confidential and proprietary information of Techie Digital Benchwork Inc.  No part of the software and documents may be copied,
+ * reproduced, transmitted, translated, or reduced to any electronic medium or machine-readable form without the prior written consent of
+ * Techie Digital Benchwork. Techie Digital Benchwork makes no representations with respect to the contents, and assumes no responsibility
+ * for any errors that might appear in the software and documents. This publication and the contents hereof are subject to change without
+ * notice. History
  *
  * @author Larry Pham
  * @since Dec.18.2014
@@ -38,29 +36,23 @@ import java.util.List;
 public class ShareViaDialog extends Dialog {
 
   protected static final String TAG = Properties.PREFIX + ShareViaDialog.class.getSimpleName();
-  private List<ResolveInfo> mShareAppList;
-  private List<ResolveInfo> mDisplayAppList = null;
-  public ResolveInfo mShareInfo = null;
-  private AlertDialog mDialog;
-  private Context mContext;
-  private String mItemUri;
-
-  private static String DLNA_PACKAGE_NAME = "com.techiedb.app.dlna";
-  public static int ACTION_SEND = 1;
-  public static int ACTION_SEND_MULTIPLE = 2;
-  public static int ACTION_UPLOAD_CONTENT = 3;
-  public static int ACTION_DOWNLOAD_CONTENT = 4;
-  public int mBucketId = 0;
-  public static boolean mDialogShowing = false;
-
-  private static float mSystemFontSize;
-
   private static final float HUGE_FONT_SIZE = 29.0f;
   private static final float LARGE_FONT_SIZE = 22.0f;
   private static final float NORMAL_FONT_SIZE = 20.0f;
   private static final float SMALL_FONT_SIZE = 18.0f;
   private static final float TINY_FONT_SIZE = 16.0f;
-
+  public static int ACTION_SEND = 1;
+  public static int ACTION_SEND_MULTIPLE = 2;
+  public static int ACTION_UPLOAD_CONTENT = 3;
+  public static int ACTION_DOWNLOAD_CONTENT = 4;
+  public static boolean mDialogShowing = false;
+  private static String DLNA_PACKAGE_NAME = "com.techiedb.app.dlna";
+  private static float mSystemFontSize;
+  public ResolveInfo mShareInfo = null;
+  public int mBucketId = 0;
+  private List<ResolveInfo> mShareAppList;
+  private List<ResolveInfo> mDisplayAppList = null;
+  private AlertDialog mDialog;
   private final OnDismissListener mDismissListener = new OnDismissListener() {
     @Override
     public void onDismiss(DialogInterface dialog) {
@@ -68,7 +60,8 @@ public class ShareViaDialog extends Dialog {
       mDialog = null;
     }
   };
-
+  private Context mContext;
+  private String mItemUri;
   private final OnClickListener mShareListener = new OnClickListener() {
     @Override
     public void onClick(DialogInterface dialog, int which) {
@@ -205,6 +198,19 @@ public class ShareViaDialog extends Dialog {
     return false;
   }
 
+  public void dismiss() {
+    if (mDialog != null) {
+      mDialog.dismiss();
+    }
+    super.dismiss();
+  }
+
+  public void hide() {
+    if (mDialog != null && mDialog.isShowing()) {
+      mDialog.hide();
+    }
+  }
+
   private class SendAppListAdapter extends ArrayAdapter<SendAppItem> {
 
     public SendAppListAdapter(Context context, ArrayList<SendAppItem> appItems) {
@@ -252,19 +258,6 @@ public class ShareViaDialog extends Dialog {
 
     public String getAppName() {
       return this.mAppName;
-    }
-  }
-
-  public void dismiss() {
-    if (mDialog != null) {
-      mDialog.dismiss();
-    }
-    super.dismiss();
-  }
-
-  public void hide() {
-    if (mDialog != null && mDialog.isShowing()) {
-      mDialog.hide();
     }
   }
 }

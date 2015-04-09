@@ -6,18 +6,15 @@ import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.AnimationSet;
 import android.view.animation.DecelerateInterpolator;
-import android.view.animation.RotateAnimation;
 import android.view.animation.ScaleAnimation;
 
 /**
- * Copyright (C) 2014 Techie Digital Benchwork Inc. All rights reserved. Mobile UX Promotion
- * Division. This software and its documentation are confidential and proprietary information of
- * Techie Digital Benchwork Inc.  No part of the software and documents may be copied, reproduced,
- * transmitted, translated, or reduced to any electronic medium or machine-readable form without the
- * prior written consent of Techie Digital Benchwork. Techie Digital Benchwork makes no
- * representations with respect to the contents, and assumes no responsibility for any errors that
- * might appear in the software and documents. This publication and the contents hereof are subject
- * to change without notice. History
+ * Copyright (C) 2014 Techie Digital Benchwork Inc. All rights reserved. Mobile UX Promotion Division. This software and its documentation
+ * are confidential and proprietary information of Techie Digital Benchwork Inc.  No part of the software and documents may be copied,
+ * reproduced, transmitted, translated, or reduced to any electronic medium or machine-readable form without the prior written consent of
+ * Techie Digital Benchwork. Techie Digital Benchwork makes no representations with respect to the contents, and assumes no responsibility
+ * for any errors that might appear in the software and documents. This publication and the contents hereof are subject to change without
+ * notice. History
  *
  * @author Larry Pham
  * @project BookMan
@@ -26,16 +23,14 @@ import android.view.animation.ScaleAnimation;
 public class AnimationHelper {
 
   public static final int ANIMATION_UNSPECIFIED = -1;
+  private int mAnimType = ANIMATION_UNSPECIFIED;
   public static final int ANIMATION_LISTVIEW_SORT_TO_START = 0;
   public static final int ANIMATION_LISTVIEW_SORT_TO_END = 1;
+  private final int ROTATE_ANIMATION_DELAYED = 50;
   private Rotate3dAnimation mRotate3DAnimation = null;
   private AnimationSet mAnimationSet = null;
-
   private ScaleAnimation mScaleAnim = null;
   private AlphaAnimation mAlphaAnim = null;
-  private final int ROTATE_ANIMATION_DELAYED = 50;
-
-  private int mAnimType = ANIMATION_UNSPECIFIED;
 
   public AnimationHelper() {
 

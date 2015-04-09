@@ -12,17 +12,14 @@ import android.os.SystemClock;
 /**
  * Copyright (C) 2015 Techie Digital Benchwork Inc., Ltd. All rights reserved.
  *
- * Mobility Development Division, Digital Media & Communications Business, Techie Digital
- * Benchwork., Ltd.
+ * Mobility Development Division, Digital Media & Communications Business, Techie Digital Benchwork., Ltd.
  *
- * This software and its documentation are confidential and proprietary information of Techie
- * Digital Benchwork., Ltd.  No part of the software and documents may be copied, reproduced,
- * transmitted, translated, or reduced to any electronic medium or machine-readable form without the
- * prior written consent of Techie Digital Benchwork Inc.
+ * This software and its documentation are confidential and proprietary information of Techie Digital Benchwork., Ltd.  No part of the
+ * software and documents may be copied, reproduced, transmitted, translated, or reduced to any electronic medium or machine-readable form
+ * without the prior written consent of Techie Digital Benchwork Inc.
  *
- * Techie Digital Benchwork makes no representations with respect to the contents, and assumes no
- * responsibility for any errors that might appear in the software and documents. This publication
- * and the contents hereof are subject to change without notice.
+ * Techie Digital Benchwork makes no representations with respect to the contents, and assumes no responsibility for any errors that might
+ * appear in the software and documents. This publication and the contents hereof are subject to change without notice.
  *
  * History 2015.Mar.25      Larry Pham         The 1st Sprint Version
  *
@@ -38,6 +35,10 @@ public class CrossFadeDrawable extends Drawable {
   private static final int TRANSITION_NONE = 2;
 
   private int mTransitionState = TRANSITION_NONE;
+  private final Paint mStartPaint = new Paint(Paint.FILTER_BITMAP_FLAG);
+  private final Paint mEndPaint = new Paint(Paint.FILTER_BITMAP_FLAG);
+  private final Handler mHandler;
+  private final Runnable mInvalidater;
   private boolean mCrossFade;
   private boolean mReverse;
   private long mStartTimeMillis;
@@ -46,21 +47,12 @@ public class CrossFadeDrawable extends Drawable {
   private int mDuration;
   private int mOriginalDuration;
   private int mAlpha;
-
   private Bitmap mStart;
   private Bitmap mEnd;
-
-  private final Paint mStartPaint = new Paint(Paint.FILTER_BITMAP_FLAG);
-  private final Paint mEndPaint = new Paint(Paint.FILTER_BITMAP_FLAG);
-
   private float mStartX;
   private float mStartY;
-
   private float mEndX;
   private float mEndY;
-
-  private final Handler mHandler;
-  private final Runnable mInvalidater;
 
   public CrossFadeDrawable(Bitmap startBitmap, Bitmap endBitmap) {
     this.mStart = startBitmap;
@@ -244,11 +236,11 @@ public class CrossFadeDrawable extends Drawable {
     return PixelFormat.TRANSLUCENT;
   }
 
-  public void setCrossFadeEnabled(boolean enabled) {
-    mCrossFade = enabled;
-  }
-
   public boolean isCrossFadeEnabled() {
     return mCrossFade;
+  }
+
+  public void setCrossFadeEnabled(boolean enabled) {
+    mCrossFade = enabled;
   }
 }

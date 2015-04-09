@@ -1,11 +1,7 @@
 package com.techiedb.app.bookman.services;
 
 import com.techiedb.app.bookman.Properties;
-import com.techiedb.app.bookman.models.JsonBook;
 import com.techiedb.app.bookman.models.JsonBooks;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Copyright (C) 2014 Sugar Ventures Inc. All rights reserved. Mobile UX Promotion Division. This software and its documentation are
@@ -18,9 +14,11 @@ import java.util.List;
  * @since Apr.09.2015
  */
 public class BooksResult extends BookBaseResult {
+
   public static final String TAG = Properties.PREFIX + BooksResult.class.getSimpleName();
 
   public JsonBooks mJsonBooks = new JsonBooks();
+
   public BooksResult() {
 
   }

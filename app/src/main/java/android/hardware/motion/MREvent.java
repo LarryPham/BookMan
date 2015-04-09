@@ -4,14 +4,12 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 /**
- * Copyright (C) 2014 Techie Digital Benchwork Inc. All rights reserved. Mobile UX Promotion
- * Division. This software and its documentation are confidential and proprietary information of
- * Techie Digital Benchwork Inc.  No part of the software and documents may be copied, reproduced,
- * transmitted, translated, or reduced to any electronic medium or machine-readable form without the
- * prior written consent of Techie Digital Benchwork. Techie Digital Benchwork makes no
- * representations with respect to the contents, and assumes no responsibility for any errors that
- * might appear in the software and documents. This publication and the contents hereof are subject
- * to change without notice. History
+ * Copyright (C) 2014 Techie Digital Benchwork Inc. All rights reserved. Mobile UX Promotion Division. This software and its documentation
+ * are confidential and proprietary information of Techie Digital Benchwork Inc.  No part of the software and documents may be copied,
+ * reproduced, transmitted, translated, or reduced to any electronic medium or machine-readable form without the prior written consent of
+ * Techie Digital Benchwork. Techie Digital Benchwork makes no representations with respect to the contents, and assumes no responsibility
+ * for any errors that might appear in the software and documents. This publication and the contents hereof are subject to change without
+ * notice. History
  *
  * @author Larry Pham
  * @project BookMan
@@ -90,7 +88,16 @@ public class MREvent implements Parcelable {
   public static final int BLOW = 66;
   public static final int TILT = 67;
   public static final int MAX = 68;
+  public static final Parcelable.Creator<MREvent> CREATOR =
+      new Parcelable.Creator<MREvent>() {
+        public MREvent createFromParcel(Parcel in) {
+          return new MREvent(in);
+        }
 
+        public MREvent[] newArray(int size) {
+          return new MREvent[size];
+        }
+      };
   private int motion;
   private int panningDx;
   private int panningDy;
@@ -117,28 +124,28 @@ public class MREvent implements Parcelable {
     }
   }
 
-  public void setPanningDx(int dx) {
-    panningDx = dx;
-  }
-
-  public void setPanningDy(int dy) {
-    panningDy = dy;
-  }
-
-  public void setTilt(int t) {
-    tilt = t;
-  }
-
   public int getPanningDx() {
     return panningDx;
+  }
+
+  public void setPanningDx(int dx) {
+    panningDx = dx;
   }
 
   public int getPanningDy() {
     return panningDy;
   }
 
+  public void setPanningDy(int dy) {
+    panningDy = dy;
+  }
+
   public int getTilt() {
     return tilt;
+  }
+
+  public void setTilt(int t) {
+    tilt = t;
   }
 
   public String toString() {
@@ -381,15 +388,4 @@ public class MREvent implements Parcelable {
     panningDy = src.readInt();
     tilt = src.readInt();
   }
-
-  public static final Parcelable.Creator<MREvent> CREATOR =
-      new Parcelable.Creator<MREvent>() {
-        public MREvent createFromParcel(Parcel in) {
-          return new MREvent(in);
-        }
-
-        public MREvent[] newArray(int size) {
-          return new MREvent[size];
-        }
-      };
 }

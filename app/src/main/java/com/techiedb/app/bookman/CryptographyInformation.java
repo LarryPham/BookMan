@@ -10,27 +10,25 @@ import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
 
 /**
- * Copyright (C) 2014 Techie Digital Benchwork Inc. All rights reserved. Mobile UX Promotion
- * Division. This software and its documentation are confidential and proprietary information of
- * Techie Digital Benchwork Inc.  No part of the software and documents may be copied, reproduced,
- * transmitted, translated, or reduced to any electronic medium or machine-readable form without the
- * prior written consent of Techie Digital Benchwork. Techie Digital Benchwork makes no
- * representations with respect to the contents, and assumes no responsibility for any errors that
- * might appear in the software and documents. This publication and the contents hereof are subject
- * to change without notice. History
+ * Copyright (C) 2014 Techie Digital Benchwork Inc. All rights reserved. Mobile UX Promotion Division. This software and its documentation
+ * are confidential and proprietary information of Techie Digital Benchwork Inc.  No part of the software and documents may be copied,
+ * reproduced, transmitted, translated, or reduced to any electronic medium or machine-readable form without the prior written consent of
+ * Techie Digital Benchwork. Techie Digital Benchwork makes no representations with respect to the contents, and assumes no responsibility
+ * for any errors that might appear in the software and documents. This publication and the contents hereof are subject to change without
+ * notice. History
  *
  * @author Larry Pham
  * @project BookMan
  * @since Dec.18.2014
  *
- * The class represents the algorithms for encrypting and decrypting data using the basic
- * algorithms
+ * The class represents the algorithms for encrypting and decrypting data using the basic algorithms
  */
 public class CryptographyInformation {
 
   private final static String
       TAG =
       Properties.PREFIX + CryptographyInformation.class.getSimpleName();
+  private final static String HEX = "0123456789ABCDEF";
 
   public static String encrypt(String seed, String original) throws Exception {
     byte[] rawKey = getRawKey(seed.getBytes());
@@ -97,8 +95,6 @@ public class CryptographyInformation {
     }
     return result.toString();
   }
-
-  private final static String HEX = "0123456789ABCDEF";
 
   private static void appendHex(StringBuffer sBuffer, byte b) {
     sBuffer.append(HEX.charAt(b >> 4) & 0x0f).append(HEX.charAt(b & 0x0f));

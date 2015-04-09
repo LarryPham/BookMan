@@ -13,23 +13,31 @@ import java.util.Date;
 /**
  * Copyright (C) 2015.Feb Techie Digital Benchwork Inc., Ltd. All rights reserved.
  *
- * Mobility Development Division, Digital Media & Communications Business, Techie Digital
- * Benchwork., Ltd.
+ * Mobility Development Division, Digital Media & Communications Business, Techie Digital Benchwork., Ltd.
  *
- * This software and its documentation are confidential and proprietary information of Techie
- * Digital Benchwork., Ltd.  No part of the software and documents may be copied, reproduced,
- * transmitted, translated, or reduced to any electronic medium or machine-readable form without the
- * prior written consent of Techie Digital Benchwork Inc.
+ * This software and its documentation are confidential and proprietary information of Techie Digital Benchwork., Ltd.  No part of the
+ * software and documents may be copied, reproduced, transmitted, translated, or reduced to any electronic medium or machine-readable form
+ * without the prior written consent of Techie Digital Benchwork Inc.
  *
- * Techie Digital Benchwork makes no representations with respect to the contents, and assumes no
- * responsibility for any errors that might appear in the software and documents. This publication
- * and the contents hereof are subject to change without notice.
+ * Techie Digital Benchwork makes no representations with respect to the contents, and assumes no responsibility for any errors that might
+ * appear in the software and documents. This publication and the contents hereof are subject to change without notice.
  *
  * History 2015.Feb.19     Larry Pham         The 1st Sprint Version
  */
 public class Book implements Parcelable {
-  public static final String TAG = Properties.PREFIX + Book.class.getSimpleName();
 
+  public static final String TAG = Properties.PREFIX + Book.class.getSimpleName();
+  public static final Creator<Book> CREATOR = new Creator<Book>() {
+    @Override
+    public Book createFromParcel(Parcel source) {
+      return new Book(source);
+    }
+
+    @Override
+    public Book[] newArray(int size) {
+      return new Book[size];
+    }
+  };
   private long mID = 1l;
   private String mTitle = null;
   private String mSubTitle = null;
@@ -43,7 +51,6 @@ public class Book implements Parcelable {
   private String mContentLink = null;
   private Image mImage = null;
   private Image mOriginalImage = null;
-
   private Enclosure mEnclosure = null;
   private Date mDownloadDate = null;
   private StorageValueState mState = StorageValueState.NONE;
@@ -212,19 +219,47 @@ public class Book implements Parcelable {
     dest.writeValue(this.mOriginalImage);
   }
 
-  public static final Creator<Book> CREATOR = new Creator<Book>() {
-    @Override
-    public Book createFromParcel(Parcel source) {
-      return new Book(source);
-    }
+  public void readFromSource(Parcel inSource) {
+    this.mID = inSource.readLong();
+    this.mTitle = inSource.readString();
+    this.mSubTitle = inSource.readString();
+    this.mDescription = inSource.readString();
+    this.mAuthor = inSource.readString();
+    this.mYear = inSource.readInt();
+    this.mPage = inSource.readInt();
+    this.mPublisher = inSource.readString();
+    this.mImageURL = inSource.readString();
+    this.mContentLink = inSource.readString();
 
-    @Override
-    public Book[] newArray(int size) {
-      return new Book[size];
-    }
-  };
+    this.mImage = (Image) inSource.readValue(Image.class.getClassLoader());
+    this.mOriginalImage = (Image) inSource.readValue(Image.class.getClassLoader());
+    this.mEnclosure = (Enclosure) inSource.readSerializable();
+  }
+
+  public static enum MediaType {
+    PDF, NONE
+  }
+
+  public static enum EnclosureDownloadButtonType {
+    NO_DOWNLOAD,
+    DOWNLOADING_CONTENT,
+    WAITING_DOWNLOAD,
+    COMPLETED_DOWNLOAD
+  }
 
   public static class Enclosure implements Parcelable {
+
+    public static final Creator<Enclosure> CREATOR = new Creator<Enclosure>() {
+      @Override
+      public Enclosure createFromParcel(Parcel source) {
+        return new Enclosure(source);
+      }
+
+      @Override
+      public Enclosure[] newArray(int size) {
+        return new Enclosure[size];
+      }
+    };
     private int mDBId = 0;
     private String mLocalPath = null;
     private String mTitle = null;
@@ -285,18 +320,6 @@ public class Book implements Parcelable {
       return this.mType;
     }
 
-    public void setType(EnclosureType type) {
-      this.mType = type;
-    }
-
-    public void setType(MediaType type) {
-      if (type == MediaType.NONE) {
-        this.mType = EnclosureType.NONE;
-      } else if (type == MediaType.PDF){
-        this.mType = EnclosureType.PDF;
-      }
-    }
-
     public void setType(String type) {
       if (type == null || type.length() == 0) {
         return;
@@ -312,12 +335,20 @@ public class Book implements Parcelable {
       }
     }
 
-    public long getLength() {
-      return this.mLength;
+    public void setType(EnclosureType type) {
+      this.mType = type;
     }
 
-    public void setLength(long length) {
-      this.mLength = length;
+    public void setType(MediaType type) {
+      if (type == MediaType.NONE) {
+        this.mType = EnclosureType.NONE;
+      } else if (type == MediaType.PDF) {
+        this.mType = EnclosureType.PDF;
+      }
+    }
+
+    public long getLength() {
+      return this.mLength;
     }
 
     public void setLength(String length) {
@@ -330,6 +361,10 @@ public class Book implements Parcelable {
           this.mLength = 0;
         }
       }
+    }
+
+    public void setLength(long length) {
+      this.mLength = length;
     }
 
     public String getTitle() {
@@ -371,45 +406,5 @@ public class Book implements Parcelable {
       this.mLength = source.readLong();
       this.mType = Enum.valueOf(EnclosureType.class, source.readString());
     }
-
-    public static final Creator<Enclosure> CREATOR = new Creator<Enclosure>() {
-      @Override
-      public Enclosure createFromParcel(Parcel source) {
-        return new Enclosure(source);
-      }
-
-      @Override
-      public Enclosure[] newArray(int size) {
-        return new Enclosure[size];
-      }
-    };
-  }
-
-  public static enum MediaType{
-    PDF, NONE
-  }
-
-  public static enum EnclosureDownloadButtonType {
-    NO_DOWNLOAD,
-    DOWNLOADING_CONTENT,
-    WAITING_DOWNLOAD,
-    COMPLETED_DOWNLOAD
-  }
-
-  public void readFromSource(Parcel inSource) {
-    this.mID = inSource.readLong();
-    this.mTitle = inSource.readString();
-    this.mSubTitle = inSource.readString();
-    this.mDescription = inSource.readString();
-    this.mAuthor = inSource.readString();
-    this.mYear = inSource.readInt();
-    this.mPage = inSource.readInt();
-    this.mPublisher = inSource.readString();
-    this.mImageURL = inSource.readString();
-    this.mContentLink = inSource.readString();
-
-    this.mImage = (Image)inSource.readValue(Image.class.getClassLoader());
-    this.mOriginalImage = (Image) inSource.readValue(Image.class.getClassLoader());
-    this.mEnclosure = (Enclosure) inSource.readSerializable();
   }
 }

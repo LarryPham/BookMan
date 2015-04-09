@@ -12,14 +12,12 @@ import java.util.List;
 import java.util.Stack;
 
 /**
- * Copyright (C) 2015 Techie Digital Benchwork Inc. All rights reserved. Mobile UX Promotion
- * Division. This software and its documentation are confidential and proprietary information of
- * Techie Digital Benchwork Inc.  No part of the software and documents may be copied, reproduced,
- * transmitted, translated, or reduced to any electronic medium or machine-readable form without the
- * prior written consent of Techie Digital Benchwork. Techie Digital Benchwork makes no
- * representations with respect to the contents, and assumes no responsibility for any errors that
- * might appear in the software and documents. This publication and the contents hereof are subject
- * to change without notice. History
+ * Copyright (C) 2015 Techie Digital Benchwork Inc. All rights reserved. Mobile UX Promotion Division. This software and its documentation
+ * are confidential and proprietary information of Techie Digital Benchwork Inc.  No part of the software and documents may be copied,
+ * reproduced, transmitted, translated, or reduced to any electronic medium or machine-readable form without the prior written consent of
+ * Techie Digital Benchwork. Techie Digital Benchwork makes no representations with respect to the contents, and assumes no responsibility
+ * for any errors that might appear in the software and documents. This publication and the contents hereof are subject to change without
+ * notice. History
  *
  * @author Larry Pham
  * @since 2015.Feb.22
@@ -27,6 +25,7 @@ import java.util.Stack;
  * BookMan         Revision:
  */
 public class DownloadFileObserver extends FileObserver {
+
   public static final String TAG = Properties.PREFIX + DownloadFileObserver.class.getSimpleName();
   public static int CHANGES_ONLY = CREATE | DELETE | CLOSE_WRITE | MOVE_SELF
                                    | MOVED_FROM | MOVED_TO;
@@ -40,7 +39,7 @@ public class DownloadFileObserver extends FileObserver {
   private boolean mChangeCancelPath = false;
 
   public DownloadFileObserver(Context context, String path) {
-    this (context, path, ALL_EVENTS);
+    this(context, path, ALL_EVENTS);
   }
 
   public DownloadFileObserver(Context context, String path, int mask) {
@@ -63,14 +62,14 @@ public class DownloadFileObserver extends FileObserver {
       String parent = String.valueOf(stack.pop());
       mObservers.add(new SingleFileObserver(parent, mMask));
       File path = new File(parent);
-      File[] files= path.listFiles();
+      File[] files = path.listFiles();
 
       if (null == files) {
         continue;
       }
 
-      for (File file: files){
-        if (file.isDirectory() && !file.getName().equals(".") && !file.getName().equals(".")){
+      for (File file : files) {
+        if (file.isDirectory() && !file.getName().equals(".") && !file.getName().equals(".")) {
           stack.push(file.getPath());
         }
       }
@@ -83,7 +82,9 @@ public class DownloadFileObserver extends FileObserver {
 
   @Override
   public void stopWatching() {
-    if (mObservers == null) return;
+    if (mObservers == null) {
+      return;
+    }
     mObservers.clear();
     mObservers = null;
   }
@@ -95,7 +96,7 @@ public class DownloadFileObserver extends FileObserver {
   @Override
   public void onEvent(int event, String path) {
     int index = path.lastIndexOf(".");
-    String ext = path.substring(index +1, path.length());
+    String ext = path.substring(index + 1, path.length());
     switch (event) {
       case FileObserver.ACCESS:
         Log.i(TAG, "ACCESS: " + path);
@@ -120,6 +121,7 @@ public class DownloadFileObserver extends FileObserver {
   class SingleFileObserver extends FileObserver {
 
     String mPath;
+
     public SingleFileObserver(String path) {
       this(path, ALL_EVENTS);
       mPath = path;

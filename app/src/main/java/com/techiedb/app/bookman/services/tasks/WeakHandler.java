@@ -9,19 +9,18 @@ import android.support.annotation.Nullable;
 import java.lang.ref.WeakReference;
 
 /**
- * Copyright (C) 2014 Techie Digital Benchwork Inc. All rights reserved. Mobile UX Promotion
- * Division. This software and its documentation are confidential and proprietary information of
- * Techie Digital Benchwork Inc.  No part of the software and documents may be copied, reproduced,
- * transmitted, translated, or reduced to any electronic medium or machine-readable form without the
- * prior written consent of Techie Digital Benchwork. Techie Digital Benchwork makes no
- * representations with respect to the contents, and assumes no responsibility for any errors that
- * might appear in the software and documents. This publication and the contents hereof are subject
- * to change without notice. History
+ * Copyright (C) 2014 Techie Digital Benchwork Inc. All rights reserved. Mobile UX Promotion Division. This software and its documentation
+ * are confidential and proprietary information of Techie Digital Benchwork Inc.  No part of the software and documents may be copied,
+ * reproduced, transmitted, translated, or reduced to any electronic medium or machine-readable form without the prior written consent of
+ * Techie Digital Benchwork. Techie Digital Benchwork makes no representations with respect to the contents, and assumes no responsibility
+ * for any errors that might appear in the software and documents. This publication and the contents hereof are subject to change without
+ * notice. History
  *
  * @author Larry Pham
  * @since Apr.02.2015
  */
 public class WeakHandler {
+
   private final Handler.Callback mCallback;
   private final ExecHandler mExecHandler;
   private final ChainedRef mRunnableRef = new ChainedRef(null);
@@ -100,6 +99,7 @@ public class WeakHandler {
     return mExecHandler.sendMessageDelayed(msg, delayedMillis);
 
   }
+
   public boolean sendMessageAtTime(Message msg, long uptimeMillis) {
     return mExecHandler.sendMessageAtTime(msg, uptimeMillis);
   }
@@ -144,9 +144,10 @@ public class WeakHandler {
   }
 
   private static class ExecHandler extends Handler {
+
     private final WeakReference<Callback> mCallbackRef;
 
-    ExecHandler(){
+    ExecHandler() {
       mCallbackRef = null;
     }
 
@@ -180,9 +181,11 @@ public class WeakHandler {
 
 
   }
+
   static class WeakRunnable implements Runnable {
-    private final  WeakReference<Runnable> mDelegate;
-    private  final WeakReference<ChainedRef> mReference;
+
+    private final WeakReference<Runnable> mDelegate;
+    private final WeakReference<ChainedRef> mReference;
 
     WeakRunnable(WeakReference<Runnable> delegate, WeakReference<ChainedRef> reference) {
       mDelegate = delegate;
@@ -204,6 +207,11 @@ public class WeakHandler {
   }
 
   static class ChainedRef {
+
+    static final int MAX_POOL_SIZE = 15;
+    @Nullable
+    static ChainedRef sPool;
+    static int sPoolSize;
     @Nullable
     ChainedRef mNext;
     @Nullable
@@ -213,13 +221,25 @@ public class WeakHandler {
     @Nullable
     WeakRunnable mWrapper;
 
-    @Nullable
-    static ChainedRef sPool;
-    static int sPoolSize;
-    static final int MAX_POOL_SIZE = 15;
-
     public ChainedRef(@Nullable Runnable runnable) {
       this.mRunnable = runnable;
+    }
+
+    public static ChainedRef obtain(Runnable runnable) {
+      ChainedRef result = null;
+      synchronized (ChainedRef.class) {
+        if (sPool != null) {
+          result = sPool;
+          sPool = sPool.mNext;
+          sPoolSize--;
+        }
+      }
+      if (result != null) {
+        result.mRunnable = runnable;
+        return result;
+      }
+
+      return new ChainedRef(runnable);
     }
 
     public void remove() {
@@ -263,30 +283,13 @@ public class WeakHandler {
           if (current.mRunnable.equals(runnable)) {
             return current;
           }
-        } else if (runnable == null){
+        } else if (runnable == null) {
           return current;
         }
         current = current.mNext;
       }
 
       return null;
-    }
-
-    public static ChainedRef obtain(Runnable runnable) {
-      ChainedRef result = null;
-      synchronized (ChainedRef.class) {
-        if (sPool != null) {
-          result = sPool;
-          sPool = sPool.mNext;
-          sPoolSize--;
-        }
-      }
-      if (result != null) {
-        result.mRunnable = runnable;
-        return result;
-      }
-
-      return new ChainedRef(runnable);
     }
   }
 }

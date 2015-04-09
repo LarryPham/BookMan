@@ -21,10 +21,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.SocketTimeoutException;
 import java.net.URL;
-import java.util.List;
 
 /**
  * Copyright (C) 2014 Sugar Ventures Inc. All rights reserved. Mobile UX Promotion Division. This software and its documentation are
@@ -37,14 +35,12 @@ import java.util.List;
  * @since Apr.09.2015
  */
 public class JsonParser {
-  public static final String TAG = Properties.PREFIX + JsonParser.class.getSimpleName();
-  private static final boolean DEBUG = false;
 
+  public static final String TAG = Properties.PREFIX + JsonParser.class.getSimpleName();
   public static final String RESULT_ERROR_CODE = "Error";
   public static final String RESULT_TIME = "Time";
-  public static final String RESULT_TOTAL ="Total";
+  public static final String RESULT_TOTAL = "Total";
   public static final String RESULT_PAGE = "Page";
-
   public static final String BOOKS = "Books";
   public static final String ID = "Id";
   public static final String TITLE = "Title";
@@ -55,11 +51,11 @@ public class JsonParser {
   public static final String ISBN = "isbn";
   public static final String AUTHOR = "Author";
   public static final String YEAR = "Year";
-  public static final String PAGE ="Page";
+  public static final String PAGE = "Page";
   public static final String PUBLISHER = "Publisher";
   public static final String DOWNLOAD_URL = "Download";
   public static final String BOOK = "Book";
-
+  private static final boolean DEBUG = false;
   private String mURL = null;
   private String mKeyword = null;
   private int mBookId = 0;
@@ -189,7 +185,7 @@ public class JsonParser {
     try {
       long time = System.currentTimeMillis();
       if ((inStream = getInputStream()) == null) {
-        Log.e(TAG,fn + String.format("getInputStream(): "));
+        Log.e(TAG, fn + String.format("getInputStream(): "));
         throw new IOException();
       }
       String fullStr = readStream(inStream);
@@ -326,7 +322,7 @@ public class JsonParser {
       try {
         inputStream = new FileInputStream(file);
       } catch (FileNotFoundException e) {
-        Log.e (TAG, fn + "Exception: " + e.toString());
+        Log.e(TAG, fn + "Exception: " + e.toString());
         e.printStackTrace();
       }
     }
@@ -382,7 +378,7 @@ public class JsonParser {
       }
     } catch (IOException e) {
       mErrorCode = ControllerMessage.REQUEST_ERROR_REASON_HTTP_CONNECT_FAIL;
-      if (e instanceof  SocketTimeoutException) {
+      if (e instanceof SocketTimeoutException) {
         mErrorCode = ControllerMessage.REQUEST_ERROR_REASON_SERVER_TIME_OUT;
       }
       Log.e(TAG, fn + "Exception: " + e.toString());
@@ -408,7 +404,7 @@ public class JsonParser {
         int start = 0;
         int end = BUFFER_LENGTH;
         for (int i = 0; i < page; i++) {
-          subStr = jsonStr.substring(start,end);
+          subStr = jsonStr.substring(start, end);
           start += BUFFER_LENGTH;
           end += BUFFER_LENGTH;
         }

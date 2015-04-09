@@ -9,14 +9,12 @@ import android.util.AttributeSet;
 import android.widget.ProgressBar;
 
 /**
- * Copyright (C) 2014 Techie Digital Benchwork Inc. All rights reserved. Mobile UX Promotion
- * Division. This software and its documentation are confidential and proprietary information of
- * Techie Digital Benchwork Inc.  No part of the software and documents may be copied, reproduced,
- * transmitted, translated, or reduced to any electronic medium or machine-readable form without the
- * prior written consent of Techie Digital Benchwork. Techie Digital Benchwork makes no
- * representations with respect to the contents, and assumes no responsibility for any errors that
- * might appear in the software and documents. This publication and the contents hereof are subject
- * to change without notice. History
+ * Copyright (C) 2014 Techie Digital Benchwork Inc. All rights reserved. Mobile UX Promotion Division. This software and its documentation
+ * are confidential and proprietary information of Techie Digital Benchwork Inc.  No part of the software and documents may be copied,
+ * reproduced, transmitted, translated, or reduced to any electronic medium or machine-readable form without the prior written consent of
+ * Techie Digital Benchwork. Techie Digital Benchwork makes no representations with respect to the contents, and assumes no responsibility
+ * for any errors that might appear in the software and documents. This publication and the contents hereof are subject to change without
+ * notice. History
  *
  * @author Larry Pham
  * @project BookMan
@@ -27,13 +25,6 @@ public class TextProgressBar extends ProgressBar {
   public static final String TAG = Properties.PREFIX + TextProgressBar.class.getSimpleName();
   private String mContent = "";
   private TextPaint mTextPaint;
-
-  private void initTextPaint() {
-    mTextPaint = new TextPaint();
-    mTextPaint.setColor(Color.BLACK);
-    mTextPaint.setTextSize(14);
-    mTextPaint.setAntiAlias(true);
-  }
 
   public TextProgressBar(Context context) {
     super(context);
@@ -48,6 +39,13 @@ public class TextProgressBar extends ProgressBar {
   public TextProgressBar(Context context, AttributeSet attrs, int defStyleAttr) {
     super(context, attrs, defStyleAttr);
     initTextPaint();
+  }
+
+  private void initTextPaint() {
+    mTextPaint = new TextPaint();
+    mTextPaint.setColor(Color.BLACK);
+    mTextPaint.setTextSize(14);
+    mTextPaint.setAntiAlias(true);
   }
 
   @Override
