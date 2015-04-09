@@ -22,6 +22,8 @@ import java.util.List;
  */
 public class JsonBooks {
   private String mTotal;
+  private double mTime;
+  private String mError;
   private int mPage;
   private List<JsonBookItem> mJsonBookList=  new ArrayList<JsonBookItem>();
 
@@ -43,6 +45,22 @@ public class JsonBooks {
 
   public void setPage(int page) {
     mPage = page;
+  }
+
+  public double getTime() {
+    return mTime;
+  }
+
+  public void setTime(double time) {
+    mTime = time;
+  }
+
+  public String getError() {
+    return mError;
+  }
+
+  public void setError(String error) {
+    mError = error;
   }
 
   public List<JsonBookItem> getJsonBookList() {

@@ -68,6 +68,7 @@ public class Action implements Parcelable {
   public static final String DISMISS_ERROR_DIALOG ="com.techiedb.app.bookman.actions.DISMISS_ERROR_DIALOG";
   public static final String SHOW_RESPONE_TIME ="com.techiedb.app.bookman.actions.SHOW_RESPONSE_TIME";
   public static final String ENTRY_ID = "com.techiedb.app.bookman.actions.ENTRY_ID";
+  public static final String DOWNLOAD_CONTENT = "com.techiedb.app.book.actions.DOWNLOAD_CONTENT";
   protected int mId;
   protected String mCode;
   protected Object mObject;
@@ -76,6 +77,10 @@ public class Action implements Parcelable {
     this.mCode = code;
     this.mId = id;
     this.mObject = inTarget;
+  }
+
+  public Action(Parcel source) {
+    readFromParcel(source);
   }
 
   public int ID() {
@@ -145,5 +150,11 @@ public class Action implements Parcelable {
     parcel.writeString(DISMISS_ERROR_DIALOG);
     parcel.writeString(SHOW_RESPONE_TIME);
     parcel.writeString(ENTRY_ID);
+  }
+
+  public void readFromParcel(Parcel source) {
+    this.mId = source.readInt();
+    this.mCode = source.readString();
+    this.mObject = source.readSerializable();
   }
 }

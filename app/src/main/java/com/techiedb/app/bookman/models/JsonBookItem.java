@@ -25,8 +25,10 @@ public class JsonBookItem implements Serializable {
   public static final String TAG = Properties.PREFIX + JsonBookItem.class.getSimpleName();
   private long mId;
   private String mTitle;
+  private String mSubTitle;
   private String mDescription;
   private Image mCoverBookImage;
+  private String mCoverBookImageURL;
   private String mISBN;
 
   public long getId() {
@@ -67,5 +69,21 @@ public class JsonBookItem implements Serializable {
 
   public void setISBN(String ISBN) {
     mISBN = ISBN;
+  }
+
+  public String getSubTitle() {
+    return mSubTitle;
+  }
+
+  public void setSubTitle(String subTitle) {
+    mSubTitle = subTitle;
+  }
+
+  public String getCoverBookImageURL() {
+    return mCoverBookImageURL;
+  }
+
+  public void setCoverBookImageURL(String coverBookImageURL) {
+    mCoverBookImageURL = coverBookImageURL;
   }
 }

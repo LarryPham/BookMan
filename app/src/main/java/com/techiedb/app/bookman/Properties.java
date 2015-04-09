@@ -47,7 +47,8 @@ public class Properties {
   public static final int CONN_DISCONNECTED = 0;
   public static final int CONN_WIFI = 1;
   public static final int CONN_3G = 2;
-
+  public static final int CONNECTION_TIMEOUT = 3000;
+  public static final int CONNECTION_READ_TIMEOUT = 5000;
   public static enum StorageValueState {
     NONE,
     ONLY_EXTERNAL_SUPPORT,
