@@ -12,7 +12,7 @@
         android:layout_width="@android:dimen/app_icon_size"
         android:layout_height="@android:dimen/app_icon_size"
         android:scaleType="fitCenter"
-        android:src="@drawable/ic_launcher"/>
+        android:src="@drawable/appcode"/>
     <LinearLayout
         android:orientation="vertical"
         android:gravity="center_vertical"

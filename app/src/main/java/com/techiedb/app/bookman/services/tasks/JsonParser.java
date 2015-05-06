@@ -25,10 +25,10 @@ import java.net.SocketTimeoutException;
 import java.net.URL;
 
 /**
- * Copyright (C) 2014 Sugar Ventures Inc. All rights reserved. Mobile UX Promotion Division. This software and its documentation are
- * confidential and proprietary information of Sugar Ventures Inc.  No part of the software and documents may be copied, reproduced,
- * transmitted, translated, or reduced to any electronic medium or machine-readable form without the prior written consent of Sugar Ventures
- * Inc. Sugar Ventures Inc makes no representations with respect to the contents, and assumes no responsibility for any errors that might
+ * Copyright (C) 2014 Techie Digital Inc. All rights reserved. Mobile UX Promotion Division. This software and its documentation are
+ * confidential and proprietary information of Techie Digital Inc.  No part of the software and documents may be copied, reproduced,
+ * transmitted, translated, or reduced to any electronic medium or machine-readable form without the prior written consent of Techie Digital
+ * Inc. Techie Digital Inc makes no representations with respect to the contents, and assumes no responsibility for any errors that might
  * appear in the software and documents. This publication and the contents hereof are subject to change without notice. History
  *
  * @author Larry Pham
@@ -58,7 +58,7 @@ public class JsonParser {
   private static final boolean DEBUG = false;
   private String mURL = null;
   private String mKeyword = null;
-  private int mBookId = 0;
+  private long mBookId = 0;
   private int mPageNumber = 0;
 
   private int mMaxSize = Properties.MAX_SIZE_INIT_VALUE;
@@ -97,11 +97,11 @@ public class JsonParser {
     mKeyword = keyword;
   }
 
-  public int getBookId() {
+  public long getBookId() {
     return mBookId;
   }
 
-  public void setBookId(int bookId) {
+  public void setBookId(long bookId) {
     mBookId = bookId;
   }
 
@@ -197,7 +197,7 @@ public class JsonParser {
       }
       JSONObject jsonObject = new JSONObject("Book" + fullStr);
       printFormattedJsonStr(jsonObject, fullStr);
-      JSONObject jsonObj = (JSONObject) jsonObject.get("Book");
+      JSONObject jsonObj = (JSONObject) jsonObject.get(BOOK);
       String resultErrorCode = jsonObject.getString(RESULT_ERROR_CODE);
       if (Integer.parseInt(resultErrorCode) > 0) {
         Log.e(TAG, fn + String.format("ERROR: resultCode = %s", resultErrorCode));
@@ -206,17 +206,17 @@ public class JsonParser {
       }
       JsonBook jsonBook = new JsonBook();
 
-      jsonBook.setId(jsonObj.optInt("ID"));
-      jsonBook.setTitle(jsonObj.optString("Title"));
-      jsonBook.setSubTitle(jsonObj.optString("SubTitle"));
-      jsonBook.setDescription(jsonObj.optString("Description"));
-      jsonBook.setAuthor(jsonObj.optString("Author"));
-      jsonBook.setISBN(jsonObj.optString("ISBN"));
-      jsonBook.setYear(jsonObj.optString("Year"));
-      jsonBook.setPage(jsonObj.optString("Page"));
-      jsonBook.setPublisher(jsonObj.optString("Publisher"));
-      jsonBook.setDownloadImageURL(jsonObj.optString("Image"));
-      jsonBook.setDownloadURL(jsonObj.optString("Download"));
+      jsonBook.setId(jsonObj.optInt(ID));
+      jsonBook.setTitle(jsonObj.optString(TITLE));
+      jsonBook.setSubTitle(jsonObj.optString(SUB_TITLE));
+      jsonBook.setDescription(jsonObj.optString(DESCRIPTION));
+      jsonBook.setAuthor(jsonObj.optString(AUTHOR));
+      jsonBook.setISBN(jsonObj.optString(ISBN));
+      jsonBook.setYear(jsonObj.optString(YEAR));
+      jsonBook.setPage(jsonObj.optString(PAGE));
+      jsonBook.setPublisher(jsonObj.optString(PUBLISHER));
+      jsonBook.setDownloadImageURL(jsonObj.optString(IMAGE));
+      jsonBook.setDownloadURL(jsonObj.optString(DOWNLOAD_URL));
       long secondTime = System.currentTimeMillis();
       Log.d(TAG, fn + String.format("Parsing Time= %dms", (secondTime - time)));
 

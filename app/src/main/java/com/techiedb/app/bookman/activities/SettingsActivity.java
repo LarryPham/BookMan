@@ -1,8 +1,9 @@
 package com.techiedb.app.bookman.activities;
 
-import android.preference.PreferenceActivity;
-
 import com.techiedb.app.bookman.Properties;
+
+import java.util.prefs.PreferenceChangeEvent;
+import java.util.prefs.PreferenceChangeListener;
 
 /**
  * Copyright (C) 2014 Techie Digital Benchwork Inc. All rights reserved. Mobile UX Promotion Division. This software and its documentation
@@ -16,8 +17,27 @@ import com.techiedb.app.bookman.Properties;
  * @project BookMan
  * @since Dec.19.2014
  */
-public class SettingsActivity extends PreferenceActivity {
+public class SettingsActivity extends BaseActivity implements PreferenceChangeListener {
 
   protected static final String TAG = Properties.PREFIX + SettingsActivity.class.getSimpleName();
 
+  @Override
+  protected int getSelfNavDrawerItem() {
+    return NAVDRAWER_ITEM_BOOK_SETTINGS;
+  }
+
+  @Override
+  public void invalidate() {
+
+  }
+
+  @Override
+  public void invalidate(Object param) {
+
+  }
+
+  @Override
+  public void preferenceChange(PreferenceChangeEvent pce) {
+
+  }
 }

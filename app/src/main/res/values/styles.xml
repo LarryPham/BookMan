@@ -1,8 +1,104 @@
 <resources>
-
-    <!-- Base application theme. -->
     <style name="AppTheme" parent="android:Theme.Holo.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
+    </style>
+    <style name="BookMan.Theme" parent="Theme.AppCompat.Light"/>
+    <style name="BookMan.Widget" parent="Theme.AppCompat"/>
+    <!-- Immediate parent theme to specify base values for custom attributes -->
+    <style name="Theme" parent="BookMan.Theme">
+        <item name="android:editTextBackground">@drawable/abc_edit_text_material</item>
     </style>
 
+    <style name="Theme.BookMan.Base" parent="Theme">
+        <!--<item name="actionBarIconColor">#fff</item>-->
+        <!--<item name="actionBarInsetStart">@dimen/keyline_2</item>-->
+        <item name="homeAsUpIndicator">@drawable/ic_back</item>
+        <item name="popupItemBackground">?android:selectableItemBackground</item>
+        <item name="photoItemForeground">?android:selectableItemBackground</item>
+        <item name="photoItemForegroundBorderless">?android:selectableItemBackground</item>
+        <item name="colorPrimary">@color/theme_primary</item>
+        <item name="colorPrimaryDark">@color/theme_primary_dark</item>
+        <item name="colorAccent">@color/theme_accent_2</item>
+        <item name="android:textColorLink">@color/theme_accent_2</item>
+        <item name="windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowBackground">@android:color/white</item>
+        <item name="android:homeAsUpIndicator">@drawable/ic_back</item>
+        <item name="android:popupMenuStyle">@null</item>
+    </style>
+
+    <style name="Theme.BookMan" parent="Theme.BookMan.Base"/>
+
+    <style name="Theme.BookMan.WithNavDrawer" parent="Theme.BookMan"/>
+    <!-- Welcome screen  theme -->
+    <style name="Theme.BookMan.Welcome" parent="Theme.BookMan"/>
+    <!-- Styles theme for collections screen -->
+    <style name="Theme.BookMan.Collections" parent="Theme.BookMan.WithNavDrawer">
+        <item name="actionBarInsetStart">@dimen/keyline_2_minus_16dp</item>
+        <item name="spinnerBarInsetStart">@dimen/keyline_2_minus_16dp</item>
+        <item name="android:windowBackground">@color/gray_background</item>
+    </style>
+
+    <style name="Theme.BookMan.Search" parent="Theme.BookMan">
+        <item name="actionBarInsetStart">@dimen/keyline_2_minus_16dp</item>
+        <item name="android:windowBackground">@color/gray_background</item>
+        <item name="colorControlActivated">@color/theme_accent_1</item>
+    </style>
+
+    <style name="Theme.BookMan.Widget" parent="BookMan.Widget">
+        <item name="android:popupMenuStyle">@style/Widget.BookMan.PopupMenu</item>
+        <item name="android:listPopupWindowStyle">@style/Widget.BookMan.ListView.DropDown</item>
+        <item name="android:textAppearanceLargePopupMenu">@style/TextAppearance.LargePopupMenu</item>
+    </style>
+
+    <style name="TransparentActionBar" parent="">
+        <item name="android:background">@null</item>
+    </style>
+
+    <style name="TranslucentActionBar" parent="">
+        <item name="android:background">@color/transparent</item>
+    </style>
+
+    <style name="Widget.BookMan.Search.AutoCompleteTextView" parent="Widget.AppCompat.Light.AutoCompleteTextView">
+        <item name="android:textColorHint">#5fff</item>
+    </style>
+
+    <!-- PopupMenu Style -->
+    <style name="Widget.BookMan.PopupMenu" parent="Widget.AppCompat.Light.PopupMenu">
+        <item name="android:dropDownSelector">?popupItemBackground</item>
+    </style>
+
+    <style name="Widget.BookMan.ListView.DropDown" parent="Widget.AppCompat.Light.ListView.DropDown">
+        <item name="android:listSelector">?popupItemBackground</item>
+        <item name="android:divider">@null</item>
+        <item name="android:dividerHeight">0dp</item>
+    </style>
+
+    <style name="TextAppearance.LargePopupMenu" parent="TextAppearance.AppCompat.Widget.PopupMenu.Large">
+        <item name="android:textColor">@color/body_text_1</item>
+    </style>
+
+    <style name="Theme.BookMan.SearchView" parent="Widget.AppCompat.SearchView"/>
+
+    <style name="Theme.BookMan.Details.Base" parent="Theme.BookMan">
+        <item name="isFloatingWindow">false</item>
+    </style>
+    <style name="Theme.BookMan.Details" parent="Theme.BookMan.Details.Base"/>
+    <!-- Style themes for History Tab -->
+    <style name="Theme.BookMan.History" parent="Theme.BookMan.WithNavDrawer"/>
+    <!-- Style themes for Favourites Tab -->
+    <style name="Theme.BookMan.Favourites" parent="Theme.BookMan.WithNavDrawer"/>
+
+    <style name="ActionBarThemeOverlay" parent="">
+        <item name="android:textColorPrimary">#fff</item>
+        <item name="colorControlNormal">?actionBarIconColor</item>
+        <item name="colorControlHighlight">#3fff</item>
+    </style>
+
+    <style name="ActionBarPopupThemeOverlay" parent="ThemeOverlay.AppCompat.Light"/>
+
+    <style name="ActionBar.TitleText" parent="Theme.BookMan">
+        <item name="android:textColor">#fff</item>
+        <item name="android:textSize">18sp</item>
+    </style>
 </resources>

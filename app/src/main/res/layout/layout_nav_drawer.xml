@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.techiedb.app.bookman.widgets.ScrimInsetsScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:id="@+id/nav_drawer"
+        android:background="@color/nav_drawer_background"
+        android:fitsSystemWindows="true"
+        tools:ignore="RtlCompat"
+        app:insetForeground="#4000">
+    <LinearLayout android:orientation="vertical"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content">
+        <FrameLayout android:id="@+id/chosen_account_view"
+                     android:layout_width="match_parent"
+                     android:layout_height="@dimen/nav_drawer_chosen_account_height"
+                     android:foreground="?photoItemForeground">
+            <ImageView android:layout_width="match_parent"
+                       android:layout_height="match_parent"
+                       android:src="@drawable/default_cover"
+                       android:tint="@color/account_photo_scrim"
+                       android:contentDescription="@null"
+                       android:scaleType="centerCrop"/>
+            <RelativeLayout android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="@dimen/keyline_1"
+                            android:paddingRight="@dimen/keyline_1"
+                            android:paddingTop="@dimen/keyline_1"
+                            android:id="@+id/chosen_account_content_view">
+                <com.techiedb.app.bookman.widgets.BezelImageView
+                        android:id="@+id/profile_image"
+                        android:layout_width="@dimen/nav_drawer_profile_image_size"
+                        android:layout_height="@dimen/nav_drawer_profile_image_size"
+                        android:src="@drawable/person_image_empty"
+                        android:scaleType="centerCrop"
+                        app:maskDrawable="@drawable/circle_mask"/>
+                <ImageView android:id="@+id/expand_account_box_indicator"
+                           android:visibility="visible"
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:layout_marginLeft="16dp"
+                           android:layout_alignParentEnd="true"
+                           android:layout_alignParentBottom="true"
+                           android:scaleType="center"
+                           android:src="@drawable/ic_drawer_accounts_expand"/>
+                <TextView android:id="@+id/profile_email_text"
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:layout_alignLeft="@+id/profile_image"
+                          android:layout_toLeftOf="@id/expand_account_box_indicator"
+                          android:layout_alignParentBottom="true"
+                          android:paddingBottom="@dimen/keyline_1"
+                          android:textSize="@dimen/text_size_medium"
+                          android:text="@string/account_email_sample_text"
+                          android:textColor="@color/body_text_2_inverse"
+                          android:maxLines="1"
+                          android:singleLine="true"
+                          android:ellipsize="end"/>
+                <TextView android:id="@+id/profile_name_text"
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:layout_above="@id/profile_email_text"
+                          android:layout_alignLeft="@+id/profile_image"
+                          android:layout_toLeftOf="@id/expand_account_box_indicator"
+                          android:textSize="@dimen/text_size_large"
+                          android:textColor="@color/body_text_1_inverse"
+                          android:maxLines="1"
+                          android:text="@string/account_name_sample_text"
+                          android:singleLine="true"
+                          android:ellipsize="end"/>
+            </RelativeLayout>
+        </FrameLayout>
+        <FrameLayout android:layout_width="match_parent"
+                     android:layout_height="wrap_content">
+            <!-- Account Items -->
+            <LinearLayout android:id="@+id/account_list"
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:layout_marginTop="8dp"
+                          android:orientation="vertical"
+                          android:visibility="invisible"/>
+            <!-- Drawer Items -->
+            <LinearLayout android:id="@+id/nav_drawer_items_list"
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:orientation="vertical"/>
+        </FrameLayout>
+    </LinearLayout>
+</com.techiedb.app.bookman.widgets.ScrimInsetsScrollView>

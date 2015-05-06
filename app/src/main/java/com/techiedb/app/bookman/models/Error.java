@@ -29,6 +29,10 @@ public class Error {
 
   }
 
+  public Error(int errorCode) {
+    setErrorCode(errorCode);
+  }
+
   public int getErrorCode() {
     return mErrorCode;
   }

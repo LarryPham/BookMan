@@ -44,7 +44,7 @@ public class BooksProvider extends ContentProvider {
   @Override
   public boolean onCreate() {
     BookDBHelper dbHelper = new BookDBHelper(getContext());
-    mDB = dbHelper.getWritableDatabase();
+    //mDB = dbHelper.getWritableDatabase();
     return true;
   }
 
