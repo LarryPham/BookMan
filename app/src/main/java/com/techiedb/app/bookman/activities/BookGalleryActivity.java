@@ -1,6 +1,8 @@
 package com.techiedb.app.bookman.activities;
 
-import com.techiedb.app.bookman.Properties;
+import android.os.Bundle;
+
+import com.techiedb.app.bookman.utils.LogUtils;
 
 /**
  * Copyright (C) 2014 Techie Digital Benchwork Inc. All rights reserved. Mobile UX Promotion Division. This software and its documentation
@@ -15,8 +17,17 @@ import com.techiedb.app.bookman.Properties;
  * @since Dec.19.2014
  */
 public class BookGalleryActivity extends BaseActivity {
+  public static final String TAG = LogUtils.makeLogTag(BookGalleryActivity.class);
 
-  protected static final String TAG = Properties.PREFIX + BookGalleryActivity.class.getSimpleName();
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+  }
+
+  @Override
+  protected int getSelfNavDrawerItem() {
+    return NAVDRAWER_ITEM_BOOK_COLLECTIONS;
+  }
 
   @Override
   public void invalidate() {

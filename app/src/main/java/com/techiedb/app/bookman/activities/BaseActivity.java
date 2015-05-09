@@ -23,6 +23,7 @@ import com.techiedb.app.bookman.R;
 import com.techiedb.app.bookman.controllers.BaseController;
 import com.techiedb.app.bookman.models.Image;
 import com.techiedb.app.bookman.utils.LogUtils;
+import com.techiedb.app.bookman.utils.PreferenceUtils;
 import com.techiedb.app.bookman.widgets.ScrimInsetsScrollView;
 
 import java.util.ArrayList;
@@ -231,6 +232,13 @@ public abstract class BaseActivity extends ActionBarActivity {
         onNavDrawerStateChanged(isNavDrawerOpen(), newState != DrawerLayout.STATE_IDLE);
       }
     });
+    // When the user runs the app for the first time, we want to land them with the
+    // navigation drawer open, But just the first time.
+    if (!PreferenceUtils.isWelcomeDone(this)) {
+      // first run of the app starts with the nav drawer open
+      PreferenceUtils.markWelcomeDone(this);
+      mDrawerLayout.openDrawer(Gravity.START);
+    }
   }
 
   @Override
