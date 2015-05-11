@@ -56,4 +56,15 @@
     <declare-styleable name="BookMan">
         <attr name="isFloatingWindow" format="boolean" />
     </declare-styleable>
+
+    <!--
+        BookManTextView attribute to enable switching between regular and light Open Sans typeface (see widgets/BookManTextView)
+    -->
+    <declare-styleable name="BookManTextView">
+        <attr name="fontVariation" format="enum">
+            <enum name="normal" value="0"/>
+            <enum name="light" value="1"/>
+        </attr>
+        <attr name="fixWidowWords" format="boolean"/>
+    </declare-styleable>
 </resources>

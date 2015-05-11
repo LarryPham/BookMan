@@ -27,5 +27,8 @@
     <string name="nav_drawer_item_downloads">Downloads</string>
     <string name="account_email_sample_text">larrypham.vn@gmail.com</string>
     <string name="account_name_sample_text">Larry Pham</string>
+    <string name="signin_with_google_plus">Sign-in with google plus</string>
+    <string name="signin_with_facebook">Sign-in with facebook</string>
+    <string name="signin_with_twitter">Sign-in with twitter</string>
 
 </resources>
