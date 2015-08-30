@@ -2,7 +2,6 @@
 <resources>
     <color name="theme_primary_dark">#ffcb382d</color>
     <color name="theme_primary_light">#ff4eeff5</color>
-
     <color name="theme_accent_1">#ff226165</color>
     <color name="theme_accent_1_light">#ff38a0a7</color>
     <color name="theme_accent_2">#ff52eff8</color>

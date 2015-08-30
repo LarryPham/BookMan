@@ -1,5 +1,8 @@
 package com.techiedb.app.bookman.models;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 import com.techiedb.app.bookman.Properties;
 
 import java.io.Serializable;
@@ -20,132 +23,166 @@ import java.io.Serializable;
  */
 public class JsonBook implements Serializable {
 
-  public static final String TAG = Properties.PREFIX + JsonBook.class.getSimpleName();
-  private long mId = 1231243445;
-  private String mTitle;
-  private String mSubTitle;
-  private String mDescription;
-  private String mAuthor;
-  private String mISBN;
-  private String mYear;
-  private String mPage;
-  private String mPublisher;
-  private Image mCoverImage;
-  private String mDownloadImageURL;
-  private String mDownloadURL;
+    public static final String TAG = Properties.PREFIX + JsonBook.class.getSimpleName();
 
-  public JsonBook() {
+    @Expose
+    @SerializedName("ID")
+    private long mId = 1231243445;
 
-  }
+    @Expose
+    @SerializedName("Title")
+    private String mTitle;
 
-  public JsonBook(Book book) {
-    this.mId = book.getID();
-    this.mTitle = book.getTitle();
-    this.mSubTitle = book.getSubTitle();
-    this.mDescription = book.getDescription();
-    this.mAuthor = book.getAuthor();
-    this.mISBN = book.getISBN();
-    this.mYear = String.valueOf(book.getYear());
-    this.mPage = String.valueOf(book.getPage());
-    this.mPublisher = book.getPublisher();
-    this.mCoverImage = new Image();
-    this.setDownloadImageURL(book.getImageURL());
-    this.mDownloadURL = book.getContentLink();
-  }
+    @Expose
+    @SerializedName("SubTitle")
+    private String mSubTitle;
 
-  public long getId() {
-    return mId;
-  }
+    @Expose
+    @SerializedName("Description")
+    private String mDescription;
 
-  public void setId(long id) {
-    mId = id;
-  }
+    @Expose
+    @SerializedName("Author")
+    private String mAuthor;
 
-  public String getTitle() {
-    return mTitle;
-  }
+    @Expose
+    @SerializedName("ISBN")
+    private String mISBN;
 
-  public void setTitle(String title) {
-    mTitle = title;
-  }
+    @Expose
+    @SerializedName("Year")
+    private String mYear;
 
-  public String getSubTitle() {
-    return mSubTitle;
-  }
+    @Expose
+    @SerializedName("Page")
+    private String mPage;
 
-  public void setSubTitle(String subTitle) {
-    mSubTitle = subTitle;
-  }
+    @Expose
+    @SerializedName("Publisher")
+    private String mPublisher;
 
-  public String getDescription() {
-    return mDescription;
-  }
+    private Image mCoverImage;
 
-  public void setDescription(String description) {
-    mDescription = description;
-  }
+    @Expose
+    @SerializedName("Image")
+    private String mDownloadImageURL;
 
-  public String getAuthor() {
-    return mAuthor;
-  }
+    @Expose
+    @SerializedName("Download")
+    private String mDownloadURL;
 
-  public void setAuthor(String author) {
-    mAuthor = author;
-  }
+    public JsonBook() {
 
-  public String getISBN() {
-    return mISBN;
-  }
+    }
 
-  public void setISBN(String ISBN) {
-    mISBN = ISBN;
-  }
+    public JsonBook(Book book) {
+        this.mId = book.getID();
+        this.mTitle = book.getTitle();
+        this.mSubTitle = book.getSubTitle();
+        this.mDescription = book.getDescription();
+        this.mAuthor = book.getAuthor();
+        this.mISBN = book.getISBN();
+        this.mYear = String.valueOf(book.getYear());
+        this.mPage = String.valueOf(book.getPage());
+        this.mPublisher = book.getPublisher();
+        this.mCoverImage = new Image();
+        this.setDownloadImageURL(book.getImageURL());
+        this.mDownloadURL = book.getContentLink();
+    }
 
-  public String getYear() {
-    return mYear;
-  }
+    public long getId() {
+        return mId;
+    }
 
-  public void setYear(String year) {
-    mYear = year;
-  }
+    public void setId(long id) {
+        mId = id;
+    }
 
-  public String getPage() {
-    return mPage;
-  }
+    public String getTitle() {
+        return mTitle;
+    }
 
-  public void setPage(String page) {
-    mPage = page;
-  }
+    public void setTitle(String title) {
+        mTitle = title;
+    }
 
-  public String getPublisher() {
-    return mPublisher;
-  }
+    public String getSubTitle() {
+        return mSubTitle;
+    }
 
-  public void setPublisher(String publisher) {
-    mPublisher = publisher;
-  }
+    public void setSubTitle(String subTitle) {
+        mSubTitle = subTitle;
+    }
 
-  public Image getCoverImage() {
-    return mCoverImage;
-  }
+    public String getDescription() {
+        return mDescription;
+    }
 
-  public void setCoverImage(Image coverImage) {
-    mCoverImage = coverImage;
-  }
+    public void setDescription(String description) {
+        mDescription = description;
+    }
 
-  public String getDownloadImageURL() {
-    return mDownloadImageURL;
-  }
+    public String getAuthor() {
+        return mAuthor;
+    }
 
-  public void setDownloadImageURL(String downloadImageURL) {
-    mDownloadImageURL = downloadImageURL;
-  }
+    public void setAuthor(String author) {
+        mAuthor = author;
+    }
 
-  public String getDownloadURL() {
-    return mDownloadURL;
-  }
+    public String getISBN() {
+        return mISBN;
+    }
 
-  public void setDownloadURL(String downloadURL) {
-    mDownloadURL = downloadURL;
-  }
+    public void setISBN(String ISBN) {
+        mISBN = ISBN;
+    }
+
+    public String getYear() {
+        return mYear;
+    }
+
+    public void setYear(String year) {
+        mYear = year;
+    }
+
+    public String getPage() {
+        return mPage;
+    }
+
+    public void setPage(String page) {
+        mPage = page;
+    }
+
+    public String getPublisher() {
+        return mPublisher;
+    }
+
+    public void setPublisher(String publisher) {
+        mPublisher = publisher;
+    }
+
+    public Image getCoverImage() {
+        return mCoverImage;
+    }
+
+    public void setCoverImage(Image coverImage) {
+        mCoverImage = coverImage;
+    }
+
+    public String getDownloadImageURL() {
+        return mDownloadImageURL;
+    }
+
+    public void setDownloadImageURL(String downloadImageURL) {
+        mDownloadImageURL = downloadImageURL;
+    }
+
+    public String getDownloadURL() {
+        return mDownloadURL;
+    }
+
+    public void setDownloadURL(String downloadURL) {
+        mDownloadURL = downloadURL;
+    }
 }

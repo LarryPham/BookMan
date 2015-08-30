@@ -6,14 +6,15 @@ import android.animation.TypeEvaluator;
 import android.app.ActivityManager;
 import android.content.ComponentName;
 import android.graphics.Rect;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -42,7 +43,7 @@ import java.util.ArrayList;
  * A BaseActivity that handles common functionality in the app. This includes the navigation drawer, login and authentication,
  * ActionBar Tweaks, amongst others.
  */
-public abstract class BaseActivity extends ActionBarActivity {
+public abstract class BaseActivity extends AppCompatActivity {
 
   public static final String TAG = LogUtils.makeLogTag(BaseActivity.class);
   // Navigation Drawer
@@ -72,7 +73,7 @@ public abstract class BaseActivity extends ActionBarActivity {
   protected static final int NAVDRAWER_ITEM_BOOK_SETTINGS = 4;
   protected static final int NAVDRAWER_ITEM_BOOK_INVALID = -1;
   protected static final int NAVDRAWER_ITEM_BOOK_SEPARATOR = -2;
-  protected static final int NAVDRAWER_ITEM_BOOK_SEPARATOR_SPECIFAL = -3;
+  protected static final int NAVDRAWER_ITEM_BOOK_SEPARATOR_SEPCIAL = -3;
 
   // titles for navdrawer items ( indices msut correspond to the above)
   private static final int[] NAVDRAWER_TITLE_RES_ID = new int[] {
@@ -196,7 +197,7 @@ public abstract class BaseActivity extends ActionBarActivity {
 
         @Override
         public void onClick(View v) {
-          mDrawerLayout.openDrawer(Gravity.START);
+          mDrawerLayout.openDrawer(GravityCompat.START);
         }
       });
     }
@@ -237,7 +238,7 @@ public abstract class BaseActivity extends ActionBarActivity {
     if (!PreferenceUtils.isWelcomeDone(this)) {
       // first run of the app starts with the nav drawer open
       PreferenceUtils.markWelcomeDone(this);
-      mDrawerLayout.openDrawer(Gravity.START);
+      mDrawerLayout.openDrawer(GravityCompat.START);
     }
   }
 
@@ -253,12 +254,12 @@ public abstract class BaseActivity extends ActionBarActivity {
 
   protected void closeNavDrawer() {
     if (mDrawerLayout != null) {
-      mDrawerLayout.closeDrawer(Gravity.START);
+        mDrawerLayout.closeDrawer(GravityCompat.START);
     }
   }
 
   protected boolean isNavDrawerOpen() {
-    return mDrawerLayout != null && mDrawerLayout.isDrawerOpen(Gravity.START);
+    return mDrawerLayout != null && mDrawerLayout.isDrawerOpen(GravityCompat.START);
   }
 
   // Subclasses can override this for custom behavior

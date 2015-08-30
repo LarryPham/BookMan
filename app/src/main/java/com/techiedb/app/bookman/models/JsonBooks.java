@@ -1,5 +1,8 @@
 package com.techiedb.app.bookman.models;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,53 +22,67 @@ import java.util.List;
  */
 public class JsonBooks {
 
-  private String mTotal;
-  private double mTime;
-  private String mError;
-  private int mPage;
-  private List<JsonBookItem> mJsonBookList = new ArrayList<JsonBookItem>();
+    @Expose
+    @SerializedName("Total")
+    private String mTotal;
 
-  public JsonBooks() {
+    @Expose
+    @SerializedName("Time")
+    private double mTime;
 
-  }
+    @Expose
+    @SerializedName("Error")
+    private String mError;
 
-  public String getTotal() {
-    return mTotal;
-  }
+    @Expose
+    @SerializedName("Page")
+    private int mPage;
 
-  public void setTotal(String total) {
-    mTotal = total;
-  }
+    @Expose
+    @SerializedName("Books")
+    private List<JsonBookItem> mJsonBookList = new ArrayList<JsonBookItem>();
 
-  public int getPage() {
-    return mPage;
-  }
+    public JsonBooks() {
 
-  public void setPage(int page) {
-    mPage = page;
-  }
+    }
 
-  public double getTime() {
-    return mTime;
-  }
+    public String getTotal() {
+        return mTotal;
+    }
 
-  public void setTime(double time) {
-    mTime = time;
-  }
+    public void setTotal(String total) {
+        mTotal = total;
+    }
 
-  public String getError() {
-    return mError;
-  }
+    public int getPage() {
+        return mPage;
+    }
 
-  public void setError(String error) {
-    mError = error;
-  }
+    public void setPage(int page) {
+        mPage = page;
+    }
 
-  public List<JsonBookItem> getJsonBookList() {
-    return mJsonBookList;
-  }
+    public double getTime() {
+        return mTime;
+    }
 
-  public void setJsonBookList(List<JsonBookItem> jsonBookList) {
-    mJsonBookList = jsonBookList;
-  }
+    public void setTime(double time) {
+        mTime = time;
+    }
+
+    public String getError() {
+        return mError;
+    }
+
+    public void setError(String error) {
+        mError = error;
+    }
+
+    public List<JsonBookItem> getJsonBookList() {
+        return mJsonBookList;
+    }
+
+    public void setJsonBookList(List<JsonBookItem> jsonBookList) {
+        mJsonBookList = jsonBookList;
+    }
 }

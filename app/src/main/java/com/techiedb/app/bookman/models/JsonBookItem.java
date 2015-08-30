@@ -1,5 +1,8 @@
 package com.techiedb.app.bookman.models;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 import com.techiedb.app.bookman.Properties;
 
 import java.io.Serializable;
@@ -20,68 +23,87 @@ import java.io.Serializable;
  */
 public class JsonBookItem implements Serializable {
 
-  public static final String TAG = Properties.PREFIX + JsonBookItem.class.getSimpleName();
-  private long mId;
-  private String mTitle;
-  private String mSubTitle;
-  private String mDescription;
-  private Image mCoverBookImage;
-  private String mCoverBookImageURL;
-  private String mISBN;
+    public static final String TAG = Properties.PREFIX + JsonBookItem.class.getSimpleName();
 
-  public long getId() {
-    return mId;
-  }
+    @Expose
+    @SerializedName("ID")
+    private long mId;
 
-  public void setId(long id) {
-    mId = id;
-  }
+    @Expose
+    @SerializedName("Title")
+    private String mTitle;
 
-  public String getTitle() {
-    return mTitle;
-  }
+    @Expose
+    @SerializedName("SubTitle")
+    private String mSubTitle;
 
-  public void setTitle(String title) {
-    mTitle = title;
-  }
+    @Expose
+    @SerializedName("Description")
+    private String mDescription;
 
-  public String getDescription() {
-    return mDescription;
-  }
+    private Image mCoverBookImage;
 
-  public void setDescription(String description) {
-    mDescription = description;
-  }
+    @Expose
+    @SerializedName("Image")
+    private String mCoverBookImageURL;
 
-  public Image getCoverBookImage() {
-    return mCoverBookImage;
-  }
+    @Expose
+    @SerializedName("ISBN")
+    private String mISBN;
 
-  public void setCoverBookImage(Image coverBookImage) {
-    mCoverBookImage = coverBookImage;
-  }
+    public long getId() {
+        return mId;
+    }
 
-  public String getISBN() {
-    return mISBN;
-  }
+    public void setId(long id) {
+        mId = id;
+    }
 
-  public void setISBN(String ISBN) {
-    mISBN = ISBN;
-  }
+    public String getTitle() {
+        return mTitle;
+    }
 
-  public String getSubTitle() {
-    return mSubTitle;
-  }
+    public void setTitle(String title) {
+        mTitle = title;
+    }
 
-  public void setSubTitle(String subTitle) {
-    mSubTitle = subTitle;
-  }
+    public String getDescription() {
+        return mDescription;
+    }
 
-  public String getCoverBookImageURL() {
-    return mCoverBookImageURL;
-  }
+    public void setDescription(String description) {
+        mDescription = description;
+    }
 
-  public void setCoverBookImageURL(String coverBookImageURL) {
-    mCoverBookImageURL = coverBookImageURL;
-  }
+    public Image getCoverBookImage() {
+        return mCoverBookImage;
+    }
+
+    public void setCoverBookImage(Image coverBookImage) {
+        mCoverBookImage = coverBookImage;
+    }
+
+    public String getISBN() {
+        return mISBN;
+    }
+
+    public void setISBN(String ISBN) {
+        mISBN = ISBN;
+    }
+
+    public String getSubTitle() {
+        return mSubTitle;
+    }
+
+    public void setSubTitle(String subTitle) {
+        mSubTitle = subTitle;
+    }
+
+    public String getCoverBookImageURL() {
+        return mCoverBookImageURL;
+    }
+
+    public void setCoverBookImageURL(String coverBookImageURL) {
+        mCoverBookImageURL = coverBookImageURL;
+    }
 }

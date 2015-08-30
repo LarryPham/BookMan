@@ -243,7 +243,7 @@ public class JsonParser {
     try {
       long startTime = System.currentTimeMillis();
       if ((inStream = getInputStream()) == null) {
-        Log.e(TAG, fn + String.format("getInputStream() failed"));
+        Log.e(TAG, fn + "getInputStream() failed");
         throw new IOException();
       }
       String fullStr = readStream(inStream);
@@ -274,7 +274,7 @@ public class JsonParser {
       int length = array.length();
       for (int index = 0; index < length; index++) {
         if (isCancelled()) {
-          Log.e(TAG, fn + String.format("Parsing cancelled!!! break."));
+          Log.e(TAG, fn + "Parsing cancelled!!! break.");
           break;
         }
 
@@ -292,7 +292,7 @@ public class JsonParser {
       Log.d(TAG, fn + String.format("Parsing time: %dms", (endTime - startTime)));
       if (isCancelled()) {
         result = null;
-        Log.e(TAG, fn + String.format("Parsing cancelled!!!"));
+        Log.e(TAG, fn + "Parsing cancelled!!!");
       } else {
         result.setJsonBooks(jsonBooks);
       }

@@ -261,9 +261,9 @@ public class ServerRequestTask extends Thread {
       result = parser.readBooksResult();
       if (result == null) {
         if (isCancelled()) {
-          Log.d(TAG, fn + String.format("Task Cancelled"));
+          Log.d(TAG, fn + "Task Cancelled");
         } else {
-          Log.d(TAG, fn + String.format("Error: result is null && not cancelled"));
+          Log.d(TAG, fn + "Error: result is null && not cancelled");
         }
       } else {
         if (result.getResultCode() > 0) {
