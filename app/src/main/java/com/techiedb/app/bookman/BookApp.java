@@ -96,11 +96,11 @@ public class BookApp extends MultiDexApplication {
                 }
             }
             if (!blnExist) {
-                Log.e(TAG, String.format("addHandlerIfNotExist"));
+                Log.e(TAG, "addHandlerIfNotExist");
                 addHandler(handler);
             }
         } catch (Exception e) {
-            Log.e(TAG, String.format("addHandlerIfNotExist()" + "Exception: " + e.getMessage()));
+            Log.e(TAG, "addHandlerIfNotExist()" + "Exception: " + e.getMessage());
             e.printStackTrace();
         }
     }

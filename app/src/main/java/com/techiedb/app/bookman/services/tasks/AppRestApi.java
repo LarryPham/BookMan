@@ -15,7 +15,7 @@ public interface AppRestApi {
      *                 of successfully request.
      */
     @GET("/book/{id}")
-    void getStory(@Path("id") int bookId,
+    void getBookDetail(@Path("id") int bookId,
                   Callback<BookResult> callback);
     /**
      * Interface method which used to get the List of Books based onto the specified query string
@@ -35,5 +35,5 @@ public interface AppRestApi {
     @GET("/search/{query}/page/{number}")
     void getBooksByQueryPaging(@Path("query") String query,
                                @Path("number") int numberPaging,
-                               Callback<BookResult> callback);
+                               Callback<BooksResult> callback);
 }

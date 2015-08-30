@@ -18,55 +18,65 @@ import com.techiedb.app.bookman.Properties;
  */
 public class Error {
 
-  public static final String TAG = Properties.PREFIX + Error.class.getSimpleName();
+    public static final String TAG = Properties.PREFIX + Error.class.getSimpleName();
 
-  private int mErrorCode = 0;
-  private String mErrorMsg = null;
-  private int mBookId = 0;
-  private String mFeedURL = null;
+    private int mErrorCode = 0;
+    private String mErrorMsg = null;
+    private String mErrorException = null;
 
-  public Error() {
+    private int mBookId = 0;
+    private String mFeedURL = null;
 
-  }
+    public Error() {
 
-  public Error(int errorCode) {
-    setErrorCode(errorCode);
-  }
+    }
 
-  public int getErrorCode() {
-    return mErrorCode;
-  }
+    public Error(int errorCode) {
+        setErrorCode(errorCode);
+    }
 
-  public void setErrorCode(int errorCode) {
-    mErrorCode = errorCode;
-  }
+    public int getErrorCode() {
+        return mErrorCode;
+    }
 
-  public String getErrorMsg() {
-    return mErrorMsg;
-  }
+    public void setErrorCode(int errorCode) {
+        mErrorCode = errorCode;
+    }
 
-  public void setErrorMsg(String errorMsg) {
-    mErrorMsg = errorMsg;
-  }
+    public String getErrorMsg() {
+        return mErrorMsg;
+    }
 
-  public int getBookId() {
-    return mBookId;
-  }
+    public void setErrorMsg(String errorMsg) {
+        mErrorMsg = errorMsg;
+    }
 
-  public void setBookId(int bookId) {
-    mBookId = bookId;
-  }
+    public int getBookId() {
+        return mBookId;
+    }
 
-  public String getFeedURL() {
-    return mFeedURL;
-  }
+    public void setBookId(int bookId) {
+        mBookId = bookId;
+    }
 
-  public void setFeedURL(String feedURL) {
-    mFeedURL = feedURL;
-  }
+    public String getFeedURL() {
+        return mFeedURL;
+    }
 
-  public String toString() {
-    return String.format("Error[code: %d, message: %s, BookId: %d, FeedURL: %s]",
-                         this.mErrorCode, this.mErrorMsg, this.mBookId, this.mFeedURL);
-  }
+    public void setFeedURL(String feedURL) {
+        mFeedURL = feedURL;
+    }
+
+    public String getErrorException() {
+        return mErrorException;
+    }
+
+    public void setErrorException(String errorException) {
+        mErrorException = errorException;
+    }
+
+    public String toString() {
+        return String.format("Error[code: %d, message: %s, BookId: %d, FeedURL: %s]",
+                this.mErrorCode, this.mErrorMsg, this.mBookId, this.mFeedURL);
+    }
 }
